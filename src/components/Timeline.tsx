@@ -38,7 +38,7 @@ export default function WeddingTimeline() {
 
     return (
         <div className="max-w-5xl mx-auto py-16 px-4">
-            <h2 className="text-center text-2xl font-bold text-olivewood mb-12">
+            <h2 className="text-center text-3xl md:text-4xl mb-4 text-olivewood">
                 Сватбена програма
             </h2>
 

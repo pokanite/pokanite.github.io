@@ -4,6 +4,7 @@ import { RSVPForm } from "./components/RSVPForm";
 import { PuffLoader } from 'react-spinners';
 import { Toaster } from "./components/ui/sonner";
 import WeddingTimeline from "./components/Timeline";
+import PhotoUpload from "./components/PhotoUpload";
 
 export interface Invite {
   name1: string;
@@ -78,11 +79,11 @@ export function App() {
     );
   }
 
-  // const inviteId = {uuid from the query params}
   return (
     <div className="min-h-screen">
       <HeroSection name1={invite.name1} name2={invite.name2} date="1" day="2" location="София, България" />
       <WeddingTimeline />
+      <PhotoUpload />
       <RSVPForm api_key={key} />
 
       <Toaster
@@ -98,19 +99,3 @@ export function App() {
     </div>
   );
 }
-
-
-{/* <WeddingDetails />
-      <Timeline />
-      <RSVPForm />
-      <Footer />
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          style: {
-            background: 'var(--wedding-white)',
-            color: 'var(--olivewood)',
-            border: '1px solid var(--sand)',
-          },
-        }}
-      /> */}
