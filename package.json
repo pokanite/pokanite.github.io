@@ -1,12 +1,12 @@
 {
   "name": "parcel-react-client-starter",
   "private": true,
-   "homepage": "https://pokanite.github.io/pokanite.github.io",
+  "homepage": "https://pokanite.github.io/pokanite.github.io",
   "version": "0.0.0",
   "source": "src/index.html",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "start": "parcel",
     "build": "parcel build"
   },
@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.13",
     "class-variance-authority": "^0.7.1",
+    "framer-motion": "^12.23.22",
     "i18next-browser-languagedetector": "^8.2.0",
     "lucide-react": "^0.544.0",
     "next-themes": "^0.4.6",

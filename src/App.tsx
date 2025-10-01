@@ -3,6 +3,7 @@ import { HeroSection } from "./components/HeroSection";
 import { RSVPForm } from "./components/RSVPForm";
 import { PuffLoader } from 'react-spinners';
 import { Toaster } from "./components/ui/sonner";
+import WeddingTimeline from "./components/Timeline";
 
 export interface Invite {
   name1: string;
@@ -81,6 +82,7 @@ export function App() {
   return (
     <div className="min-h-screen">
       <HeroSection name1={invite.name1} name2={invite.name2} date="1" day="2" location="София, България" />
+      <WeddingTimeline />
       <RSVPForm api_key={key} />
 
       <Toaster

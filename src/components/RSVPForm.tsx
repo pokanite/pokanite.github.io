@@ -170,6 +170,7 @@ export function RSVPForm({ api_key }: Props) {
                     onChange={(e) => handleFormChange("firstName", e.target.value)}
                     className="mt-2 border-sand focus:border-sage h-12"
                     required
+                    disabled={loading}
                   />
                 </div>
 
@@ -181,6 +182,7 @@ export function RSVPForm({ api_key }: Props) {
                     onChange={(e) => handleFormChange("lastName", e.target.value)}
                     className="mt-2 border-sand focus:border-sage h-12"
                     required
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -195,6 +197,7 @@ export function RSVPForm({ api_key }: Props) {
                   className="mt-2 border-sand focus:border-sage h-12"
                   pattern="^[+0-9 ]{8,16}$"
                   required
+                  disabled={loading}
                 />
               </div>
 
@@ -205,6 +208,7 @@ export function RSVPForm({ api_key }: Props) {
                   value={formData.attendance}
                   onValueChange={(value) => handleFormChange("attendance", value)}
                   className="flex gap-8"
+                  disabled={loading}
                 >
                   <div className="flex items-center space-x-3">
                     <RadioGroupItem value="yes" id="yes" className="border-sage text-sage w-5 h-5" />
@@ -233,6 +237,7 @@ export function RSVPForm({ api_key }: Props) {
                           size="sm"
                           variant="outline"
                           className="border-sage text-sage hover:bg-sage hover:text-parchment"
+                          disabled={loading}
                         >
                           <Plus size={16} />
                         </Button>
@@ -243,6 +248,7 @@ export function RSVPForm({ api_key }: Props) {
                             size="sm"
                             variant="outline"
                             className="border-bark text-bark hover:bg-bark hover:text-parchment"
+                            disabled={loading}
                           >
                             <Minus size={16} />
                           </Button>
@@ -263,7 +269,7 @@ export function RSVPForm({ api_key }: Props) {
                                 onChange={(e) => updateGuest(guest.id, "firstName", e.target.value)}
                                 className="mt-1 border-sand focus:border-sage"
                                 required={formData.attendance === "yes"}
-                                disabled={index === 0}
+                                disabled={index === 0 || loading}
                               />
                             </div>
                             <div>
@@ -273,7 +279,7 @@ export function RSVPForm({ api_key }: Props) {
                                 onChange={(e) => updateGuest(guest.id, "lastName", e.target.value)}
                                 className="mt-1 border-sand focus:border-sage"
                                 required={formData.attendance === "yes"}
-                                disabled={index === 0}
+                                disabled={index === 0 || loading}
                               />
                             </div>
                           </div>
@@ -284,6 +290,7 @@ export function RSVPForm({ api_key }: Props) {
                               checked={guest.isChild}
                               onCheckedChange={(checked) => updateGuest(guest.id, "isChild", checked as boolean)}
                               className="border-sage data-[state=checked]:bg-sage"
+                              disabled={loading}
                             />
                             <Label htmlFor={`child-${guest.id}`} className="text-bark">Дете (под 13 години)</Label>
                           </div>
@@ -296,6 +303,7 @@ export function RSVPForm({ api_key }: Props) {
                             <Select
                               value={guest.menuPreference}
                               onValueChange={(value) => updateGuest(guest.id, "menuPreference", value)}
+                              disabled={loading}
                             >
                               <SelectTrigger className="border-sand focus:border-sage bg-white">
                                 <SelectValue placeholder="Изберете предпочитано меню *" />
@@ -317,10 +325,12 @@ export function RSVPForm({ api_key }: Props) {
                   {/* Accommodation */}
                   <div>
                     <Label className="text-olivewood mb-4 block">Нуждаете ли се от настаняване? *</Label>
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <RadioGroup
                       value={formData.needsAccommodation}
                       onValueChange={(value) => handleFormChange("needsAccommodation", value)}
                       className="flex gap-8"
+                      disabled={loading}
                     >
                       <div className="flex items-center space-x-3">
                         <RadioGroupItem value="yes" className="border-sage text-sage" />
@@ -331,6 +341,10 @@ export function RSVPForm({ api_key }: Props) {
                         <Label className="text-bark">Не, благодаря</Label>
                       </div>
                     </RadioGroup>
+                    <p className="text-sm text-gray-600 max-w-xs md:text-right">
+                      Настаняването е за сметка на гостите.
+                    </p>
+                    </div>
                   </div>
                 </>
               )}
@@ -345,13 +359,13 @@ export function RSVPForm({ api_key }: Props) {
                   className="mt-2 border-sand focus:border-sage"
                   placeholder="Специални нужди, хранителни ограничения или съобщения за младоженците?"
                   rows={4}
+                  disabled={loading}
                 />
               </div>
 
               <Button type="submit" className="w-full bg-sage hover:bg-bark text-parchment h-12" size="lg" disabled={loading}>
 
                 {loading ? (
-                  // <Loader2 className="animate-spin mr-2 h-4 w-4" />
                   <></>
                 ) : (
                   <Send className="mr-2" size={20} />
