@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useRef, ChangeEvent } from "react";
+import { toast } from "sonner";
 
-export default function PhotoUploadSection() {
-  const [files, setFiles] = useState([]);
+interface Props {
+  api_key: string | null;
+}
+
+export default function PhotoUploadSection({ api_key }: Props) {
+  const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleFileChange = (e) => setFiles(Array.from(e.target.files));
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  };
 
-  const fileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
+  const fileToBase64 = (file: File) => {
+    return new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
+      reader.onload = () => resolve(reader.result as string);
       reader.onerror = (error) => reject(error);
     });
   };
@@ -19,7 +28,10 @@ export default function PhotoUploadSection() {
   const handleUpload = async () => {
     if (files.length === 0) return;
     setLoading(true);
-    setMessage("");
+
+    toast("Моля, изчакайте — качването може да отнеме време...", {
+      icon: "⏳",
+    });
 
     try {
       const fileData = await Promise.all(
@@ -33,21 +45,28 @@ export default function PhotoUploadSection() {
         })
       );
 
-      const response = await fetch("YOUR_WEB_APP_URL_HERE", {
-        method: "POST",
-        body: JSON.stringify({ files: fileData }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        `https://script.google.com/macros/s/AKfycbzDV5VONqU821MslSilc_y9zcE1o3vuiyuyg73L4rk9gFQN7FBQX37NVeLKmrRs5H4TiQ/exec?key=${api_key}`,
+        {
+          redirect: "follow",
+          method: "POST",
+          body: JSON.stringify({ files: fileData }),
+        }
+      );
 
       const data = await response.json();
       if (data.success) {
-        setMessage("Снимките са качени успешно!");
+        toast.success("Благодарим за вашето потвърждение! Снимките са качени успешно.");
         setFiles([]);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = ""; // clears input
+        }
       } else {
-        setMessage("Грешка при качването: " + data.error);
+        toast.error("Възникна грешка при качването. Моля, опитайте отново.");
       }
-    } catch (err) {
-      setMessage("Грешка при качването: " + err.message);
+    } catch (err: any) {
+      console.error("Error uploading photos:", err);
+      toast.error("Грешка при качването. Моля, опитайте отново.");
     } finally {
       setLoading(false);
     }
@@ -65,6 +84,7 @@ export default function PhotoUploadSection() {
 
         <div className="mt-6 bg-wedding-white/90 backdrop-blur-sm border border-sand/50 rounded-2xl shadow-md p-6 mx-auto space-y-3">
           <input
+            ref={fileInputRef}
             type="file"
             multiple
             accept="image/*"
@@ -80,10 +100,16 @@ export default function PhotoUploadSection() {
             {loading ? "Качване..." : "Качи снимките"}
           </button>
 
-          {message && <p className="text-bark text-sm">{message}</p>}
-
           <p className="text-sm text-sage">
-            Може да видите снимките <a href="YOUR_GOOGLE_DRIVE_FOLDER_LINK" target="_blank" className="underline">тук</a>.
+            Може да видите снимките{" "}
+            <a
+              href="https://drive.google.com/drive/folders/1ms48ZYTvu_Hcgx3CLct44U222Qbrhx_p?usp=sharing"
+              target="_blank"
+              className="underline"
+            >
+              тук
+            </a>
+            .
           </p>
         </div>
       </div>

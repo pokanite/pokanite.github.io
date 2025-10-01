@@ -83,7 +83,7 @@ export function App() {
     <div className="min-h-screen">
       <HeroSection name1={invite.name1} name2={invite.name2} date="1" day="2" location="София, България" />
       <WeddingTimeline />
-      <PhotoUpload />
+      <PhotoUpload  api_key={key} />
       <RSVPForm api_key={key} />
 
       <Toaster

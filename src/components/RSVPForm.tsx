@@ -96,11 +96,10 @@ export function RSVPForm({ api_key }: Props) {
     };
     setLoading(true);
     fetch(
-      `https://script.google.com/macros/s/AKfycbySFPYVR99_0fu1OHx0l19Md_YH09vSByxCk7P3tSXwMcyIpysKToPGtALKL7xguofXjw/exec?key=${api_key}`,
+      `https://script.google.com/macros/s/AKfycbyeRI0qSb36t0RS-gByBTrey2B7Wx0h8zijIh42pnSIISkZjXYOB7fnN3Nbjgmj8UAjEA/exec?key=${api_key}`,
       {
         redirect: "follow",
         method: "POST",
-        // headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submission),
       }
     ).then((response) => {
