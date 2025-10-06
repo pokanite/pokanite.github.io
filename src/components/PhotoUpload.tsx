@@ -82,7 +82,7 @@ export default function PhotoUploadSection({ api_key }: Props) {
           Ако сте заснели красиви моменти от сватбата, може да ги качите тук.
         </p>
 
-        <div className="mt-6 bg-wedding-white/90 backdrop-blur-sm border border-sand/50 rounded-2xl shadow-md p-6 mx-auto space-y-3">
+        <div className="mt-6 bg-wedding-white/90 backdrop-blur-sm border-sand shadow-xl rounded-md p-6 mx-auto space-y-3">
           <input
             ref={fileInputRef}
             type="file"

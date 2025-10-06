@@ -5,6 +5,8 @@ import { PuffLoader } from 'react-spinners';
 import { Toaster } from "./components/ui/sonner";
 import WeddingTimeline from "./components/Timeline";
 import PhotoUpload from "./components/PhotoUpload";
+import LocationSection from "./components/LocationSection";
+import WishesSection from "./components/WishesSection";
 
 export interface Invite {
   name1: string;
@@ -83,7 +85,9 @@ export function App() {
     <div className="min-h-screen">
       <HeroSection name1={invite.name1} name2={invite.name2} date="1" day="2" location="София, България" />
       <WeddingTimeline />
-      <PhotoUpload  api_key={key} />
+      <LocationSection />
+      <WishesSection />
+      <PhotoUpload api_key={key} />
       <RSVPForm api_key={key} />
 
       <Toaster

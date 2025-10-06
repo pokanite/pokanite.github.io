@@ -117,8 +117,8 @@ export default function WeddingTimeline() {
                                 {/* Card */}
                                 <div
                                     className={`p-6 rounded-2xl shadow-xl bg-wedding-white/90 backdrop-blur-sm border border-sand/50 w-full sm:w-[40%] ${isLeft
-                                            ? "sm:mr-auto sm:text-right max-sm:ml-16"
-                                            : "sm:ml-auto sm:text-left max-sm:ml-16"
+                                        ? "sm:mr-auto sm:text-right max-sm:ml-16"
+                                        : "sm:ml-auto sm:text-left max-sm:ml-16"
                                         }`}
                                 >
                                     <div
