@@ -1,4 +1,10 @@
-export default function LocationSection() {
+import { Invite } from "../App";
+
+export interface Params {
+    invite: Invite;
+}
+
+export default function LocationSection({ invite }: Params) {
     return (
         <section
             id="location"
@@ -12,7 +18,7 @@ export default function LocationSection() {
                 <p className="text-lg text-sand mb-8">
                     Церемонията и празненството ще се проведат в{" "}
                     <span className="font-medium text-sand">
-                        Парк „Възраждане“, гр. София
+                        {invite.location.text}
                     </span>
                     .
                 </p>
@@ -25,8 +31,7 @@ export default function LocationSection() {
                         loading="lazy"
                         allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDmCYV7eRgyiGZcfrUA1NNTDFRolhFqkUY
-    &q=place_id:ChIJN3tmgkCFqkARNfLbm-JtQwg">
+                        src={`https://www.google.com/maps/embed/v1/place?key=${invite.mapsApiKey}&q=place_id:${invite.location.mapsPlaceId}`}>
                     </iframe>
                 </div>
             </div>

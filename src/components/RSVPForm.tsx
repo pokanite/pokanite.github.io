@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card } from "./ui/card";
 import { Plus, Minus, Send, Users, Utensils, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { Invite } from "../App";
 
 interface Guest {
   id: string;
@@ -31,9 +32,21 @@ interface Submission {
 
 interface Props {
   api_key: string | null;
+  invite: Invite;
 }
 
-export function RSVPForm({ api_key }: Props) {
+export function RSVPForm({ api_key, invite }: Props) {
+
+  const hasElapsed = Date.now() > invite.answerUntilTimestamp;
+
+  const answerUntil = new Date(invite.answerUntilTimestamp);
+  const textAnswerUntilDate = answerUntil.toLocaleDateString('bg-BG', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -96,14 +109,14 @@ export function RSVPForm({ api_key }: Props) {
     };
     setLoading(true);
     fetch(
-      `https://script.google.com/macros/s/AKfycbyeRI0qSb36t0RS-gByBTrey2B7Wx0h8zijIh42pnSIISkZjXYOB7fnN3Nbjgmj8UAjEA/exec?key=${api_key}`,
+      `https://script.google.com/macros/s/${invite.googleScriptRSVP}/exec?key=${api_key}`,
       {
         redirect: "follow",
         method: "POST",
         body: JSON.stringify(submission),
       }
     ).then((response) => {
-      toast.success("Благодарим за вашето потвърждение! Очакваме с нетърпение да празнуваме заедно!");
+      toast.success("Благодарим за Вашето потвърждение! Очакваме с нетърпение да празнуваме заедно!");
       setSubmitted(true);
     }).catch((err) => {
       console.log("Error submitting RSVP:", err);
@@ -148,12 +161,19 @@ export function RSVPForm({ api_key }: Props) {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl mb-4 text-olivewood">Форма за потвърждение на присъствие</h2>
-          <p className="text-lg text-bark">Моля, отговорете до 1 май 2024 г.</p>
+          <p className="text-lg text-bark">Моля, отговорете до {textAnswerUntilDate}.</p>
         </div>
 
-        {submitted ? (
+        {hasElapsed ? (
           <Card className="p-8 bg-wedding-white border-sand shadow-xl text-center">
-            <h3 className="text-2xl text-sage mb-4">Благодарим за вашето потвърждение!</h3>
+            <h3 className="text-2xl text-sage mb-4">Времето за потвърждение изтече</h3>
+            <p className="text-bark">
+              Моля, свържете се с младоженците, ако все още желаете да потвърдите присъствие.
+            </p>
+          </Card>
+        ) : submitted ? (
+          <Card className="p-8 bg-wedding-white border-sand shadow-xl text-center">
+            <h3 className="text-2xl text-sage mb-4">Благодарим за Вашето потвърждение!</h3>
             <p className="text-bark">Очакваме с нетърпение да празнуваме заедно!</p>
           </Card>
         ) : (
@@ -324,25 +344,25 @@ export function RSVPForm({ api_key }: Props) {
                   {/* Accommodation */}
                   <div>
                     <Label className="text-olivewood mb-4 block">Нуждаете ли се от настаняване? *</Label>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <RadioGroup
-                      value={formData.needsAccommodation}
-                      onValueChange={(value) => handleFormChange("needsAccommodation", value)}
-                      className="flex gap-8"
-                      disabled={loading}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <RadioGroupItem value="yes" className="border-sage text-sage" />
-                        <Label className="text-bark">Да, моля</Label>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <RadioGroupItem value="no" className="border-sage text-sage" />
-                        <Label className="text-bark">Не, благодаря</Label>
-                      </div>
-                    </RadioGroup>
-                    <p className="text-sm text-gray-600 max-w-xs md:text-right">
-                      Настаняването е за сметка на гостите.
-                    </p>
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <RadioGroup
+                        value={formData.needsAccommodation}
+                        onValueChange={(value) => handleFormChange("needsAccommodation", value)}
+                        className="flex gap-8"
+                        disabled={loading}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <RadioGroupItem value="yes" className="border-sage text-sage" />
+                          <Label className="text-bark">Да, моля</Label>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <RadioGroupItem value="no" className="border-sage text-sage" />
+                          <Label className="text-bark">Не, благодаря</Label>
+                        </div>
+                      </RadioGroup>
+                      <p className="text-sm text-gray-600 max-w-xs md:text-right">
+                        Настаняването е за сметка на гостите.
+                      </p>
                     </div>
                   </div>
                 </>

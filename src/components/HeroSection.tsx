@@ -1,15 +1,28 @@
 import { useTranslation } from "react-i18next";
+import { Invite } from "../App";
 
 export interface HeroSectionParams {
-  name1: string;
-  name2: string;
-  location: string
-  date: string;
-  day: string;
-
+  invite: Invite;
 }
 
-export function HeroSection({ name1, name2, location }: HeroSectionParams) {
+export function HeroSection({ invite }: HeroSectionParams) {
+
+  const date = new Date(invite.startTimeTimestamp);
+
+  const textDate = date.toLocaleDateString('bg-BG', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  let dayOfWeek = date.toLocaleDateString('bg-BG', { weekday: 'long' });
+  dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+
+  const hoursText = date.toLocaleTimeString('bg-BG', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
   return (
     <section
       id="home"
@@ -30,21 +43,21 @@ export function HeroSection({ name1, name2, location }: HeroSectionParams) {
               Заедно със своите семейства
             </p>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl text-olivewood tracking-tight">
-              {name1} и {name2}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl text-olivewood tracking-tight" style={{ fontFamily: 'Kudryashev Display Sans, sans-serif' }}>
+              {invite.name1} и {invite.name2}
             </h1>
 
             <p className="text-xl md:text-2xl text-bark max-w-2xl mx-auto leading-relaxed">
-              имат удоволствието да ви поканят на тяхната сватба
+              имат удоволствието да Ви поканят на тяхната сватба
             </p>
           </div>
 
           <div className="bg-wedding-white/90 backdrop-blur-sm rounded-lg p-8 md:p-12 shadow-xl border border-sand/50 max-w-md mx-auto">
             <div className="space-y-">
               <div className="text-sm uppercase tracking-wider text-sage">Запазете датата</div>
-              <div className="text-3xl md:text-4xl text-olivewood">15 юни 2024</div>
-              <div className="text-lg text-bark">Събота • 16:00</div>
-              <div className="text-sm text-sage">{location}</div>
+              <div className="text-3xl md:text-4xl text-olivewood">{textDate}</div>
+              <div className="text-lg text-bark">{dayOfWeek} • {hoursText}</div>
+              <div className="text-sm text-sage">{invite.location.city}</div>
             </div>
           </div>
         </div>

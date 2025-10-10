@@ -12,7 +12,20 @@ export interface Invite {
   name1: string;
   name2: string;
 
-  answerUntil: number; // timestamp
+  answerUntilTimestamp: number;
+  startTimeTimestamp: number;
+
+  location: {
+    city: string;
+    text: string;
+    mapsPlaceId: string;
+  };
+
+  mapsApiKey: string;
+  photoAlbumLink: string;
+
+  googleScriptRSVP: string;
+  googleScriptUpload: string;
 }
 
 export function App() {
@@ -29,7 +42,7 @@ export function App() {
     return params.get("key");
   }, [window.location.search]);
 
-  useEffect(() => { // 3irzxzfgpda6xn7yzd2zdtw7qy0fwdnj
+  useEffect(() => {
     fetch(`https://${inviteId}.lambda-url.eu-central-1.on.aws?key=${key}`)
       .then(async (response) => {
         if (response.ok) {
@@ -62,12 +75,11 @@ export function App() {
     return (
       <div className="relative flex flex-col items-center justify-center min-h-screen bg-sand text-center px-6">
         <div className="bg-white shadow-lg rounded-2xl p-8 max-w-md">
-          {/* <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" /> */}
           <h1 className="text-2xl font-semibold text-gray-800 mb-2">
             Нещо се обърка
           </h1>
           <p className="text-gray-600 mb-4">
-            Възникна грешка при зареждане на вашата покана.
+            Възникна грешка при зареждане на Вашата покана.
             Моля, проверете дали линкът е правилен или опитайте отново.
           </p>
           <button
@@ -83,12 +95,12 @@ export function App() {
 
   return (
     <div className="min-h-screen">
-      <HeroSection name1={invite.name1} name2={invite.name2} date="1" day="2" location="София, България" />
+      <HeroSection invite={invite} />
       <WeddingTimeline />
-      <LocationSection />
+      <LocationSection invite={invite} />
       <WishesSection />
-      <PhotoUpload api_key={key} />
-      <RSVPForm api_key={key} />
+      <PhotoUpload api_key={key} invite={invite} />
+      <RSVPForm api_key={key} invite={invite} />
 
       <Toaster
         position="top-center"

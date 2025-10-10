@@ -1,11 +1,13 @@
 import { useState, useRef, ChangeEvent } from "react";
 import { toast } from "sonner";
+import { Invite } from "../App";
 
 interface Props {
   api_key: string | null;
+  invite: Invite;
 }
 
-export default function PhotoUploadSection({ api_key }: Props) {
+export default function PhotoUploadSection({ api_key, invite }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -46,7 +48,7 @@ export default function PhotoUploadSection({ api_key }: Props) {
       );
 
       const response = await fetch(
-        `https://script.google.com/macros/s/AKfycbzDV5VONqU821MslSilc_y9zcE1o3vuiyuyg73L4rk9gFQN7FBQX37NVeLKmrRs5H4TiQ/exec?key=${api_key}`,
+        `https://script.google.com/macros/s/${invite.googleScriptUpload}/exec?key=${api_key}`,
         {
           redirect: "follow",
           method: "POST",
@@ -56,7 +58,7 @@ export default function PhotoUploadSection({ api_key }: Props) {
 
       const data = await response.json();
       if (data.success) {
-        toast.success("Благодарим за вашето потвърждение! Снимките са качени успешно.");
+        toast.success("Благодарим за Вашето потвърждение! Снимките са качени успешно.");
         setFiles([]);
         if (fileInputRef.current) {
           fileInputRef.current.value = ""; // clears input
@@ -76,7 +78,7 @@ export default function PhotoUploadSection({ api_key }: Props) {
     <section id="photos" className="w-full py-12 px-6 bg-sand">
       <div className="max-w-3xl mx-auto text-center space-y-4">
         <h2 className="text-3xl md:text-4xl mb-4 text-olivewood">
-          Споделете вашите снимки
+          Споделете Вашите снимки
         </h2>
         <p className="text-lg text-bark max-w-xl mx-auto">
           Ако сте заснели красиви моменти от сватбата, може да ги качите тук.
@@ -103,7 +105,7 @@ export default function PhotoUploadSection({ api_key }: Props) {
           <p className="text-sm text-sage">
             Може да видите снимките{" "}
             <a
-              href="https://drive.google.com/drive/folders/1ms48ZYTvu_Hcgx3CLct44U222Qbrhx_p?usp=sharing"
+              href={invite.photoAlbumLink}
               target="_blank"
               className="underline"
             >

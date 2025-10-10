@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { Wine, Award, Utensils } from "lucide-react";
 
 const timeline = [
-    { time: "16:00", title: "Welcome Drink", description: "Гранд хотел Пловдив – площад „Централен“ №1", icon: Wine },
-    { time: "17:00", title: "Сватбена церемония", description: "Гранд хотел Пловдив – площад „Централен“ №1", icon: Award },
-    { time: "18:00", title: "Сватбена вечеря", description: "Гранд хотел Пловдив – площад „Централен“ №1", icon: Utensils },
+    { time: "16:30", title: "Welcome Drink", description: "", icon: Wine },
+    { time: "17:00", title: "Сватбена церемония", description: "", icon: Award },
+    { time: "18:00", title: "Сватбена вечеря", description: "", icon: Utensils },
 ];
 
 export default function WeddingTimeline() {
