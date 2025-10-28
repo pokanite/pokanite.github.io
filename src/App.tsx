@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { HeroSection } from "./components/HeroSection";
 import { RSVPForm } from "./components/RSVPForm";
-import { PuffLoader } from 'react-spinners';
+import { PuffLoader } from "react-spinners";
 import { Toaster } from "./components/ui/sonner";
 import WeddingTimeline from "./components/Timeline";
 import PhotoUpload from "./components/PhotoUpload";
@@ -32,6 +32,11 @@ export function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [invite, setInvite] = useState<Invite | undefined>(undefined);
 
+  const maxGuests = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("m");
+  }, [window.location.search]);
+
   const inviteId = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get("inviteId");
@@ -47,13 +52,14 @@ export function App() {
       .then(async (response) => {
         if (response.ok) {
           const data = (await response.json()) as Invite;
-          setInvite(data)
+          setInvite(data);
         }
-      }).catch(() => { })
+      })
+      .catch(() => {})
       .finally(() => {
         setLoading(false);
-      })
-  }, [inviteId])
+      });
+  }, [inviteId]);
 
   if (loading) {
     return (
@@ -79,8 +85,8 @@ export function App() {
             Нещо се обърка
           </h1>
           <p className="text-gray-600 mb-4">
-            Възникна грешка при зареждане на Вашата покана.
-            Моля, проверете дали линкът е правилен или опитайте отново.
+            Възникна грешка при зареждане на Вашата покана. Моля, проверете дали
+            линкът е правилен или опитайте отново.
           </p>
           <button
             onClick={() => window.location.reload()}
@@ -100,15 +106,15 @@ export function App() {
       <LocationSection invite={invite} />
       <WishesSection />
       <PhotoUpload api_key={key} invite={invite} />
-      <RSVPForm api_key={key} invite={invite} />
+      <RSVPForm api_key={key} invite={invite} maxGuests={maxGuests} />
 
       <Toaster
         position="top-center"
         toastOptions={{
           style: {
-            background: 'var(--wedding-white)',
-            color: 'var(--olivewood)',
-            border: '1px solid var(--sand)',
+            background: "var(--wedding-white)",
+            color: "var(--olivewood)",
+            border: "1px solid var(--sand)",
           },
         }}
       />

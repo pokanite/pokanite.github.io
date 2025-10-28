@@ -5,7 +5,13 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Checkbox } from "./ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import { Card } from "./ui/card";
 import { Plus, Minus, Send, Users, Utensils, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -16,7 +22,7 @@ interface Guest {
   firstName: string;
   lastName: string;
   isChild: boolean;
-  menuPreference: string;
+  menuPreference?: string;
 }
 
 interface Submission {
@@ -33,19 +39,60 @@ interface Submission {
 interface Props {
   api_key: string | null;
   invite: Invite;
+  maxGuests?: number;
 }
 
-export function RSVPForm({ api_key, invite }: Props) {
+const menus = [
+  {
+    value: "menu1",
+    short:
+      "Меню 1 - Свинско бонфиле с ябълков сос, глазирани цветни моркови върху пюре от пащърнак",
+    description: `Салата с розов домат, мус от сирена с орехи и пресни билки, краставици и червени печени чушки, поднесено с пресни брускети
+Ролс от тиквички и патладжан с биволска моцарела, кедрови ядки и балсамова редукция
+Свинско бонфиле с ябълков сос, глазирани цветни моркови върху пюре от пащърнак`,
+  },
+  {
+    value: "menu2",
+    short:
+      "Меню 2 - Пилешко филе с картофен мус с трюфел върху канапе от гъбено рагу и гриловани сезонни зеленчуци",
+    description: `Микс свежи салати с грилован Камембер, цветни чери домати и пресни зеленчуци
+Спаначена рулдина с мус от сьомга и каперси
+Пилешко филе с картофен мус с трюфел върху канапе от гъбено рагу и гриловани сезонни зеленчуци`,
+  },
+  {
+    value: "vegetarian",
+    short:
+      "Вегетарианско меню - Ризото със спанак, сушени домати, аспержи, маслини и пармезан",
+    description: `Свеж салатен микс с козе сирене, репички, фенел и портокалови филенца
+Равиоли със спанак и рикота, пармезан и маслен сос
+Ризото със спанак, сушени домати, аспержи, маслини и пармезан`,
+  },
+  {
+    value: "salmon_menu",
+    short:
+      "Вегетарианско меню - Сьомга върху канапе от мачкани билкови картофи",
+    description: `Свеж салатен микс с козе сирене, репички, фенел и портокалови филенца
+Равиоли със спанак и рикота, пармезан и маслен сос
+Сьомга върху канапе от мачкани билкови картофи, снежен грах и тиквичка с лимоново-босилекова емулсия`,
+  },
+  {
+    value: "vegan",
+    short: "Веганско меню - Стек от карфиол, фава пюре и Капоната сос",
+    description: `Киноа с печени тиквички, патладжан, чушки, свежа салата, чери домати, микс семена и дресинг
+Авокадо с манго салца, зеленчуков чипс и амарант
+Стек от карфиол, фава пюре и Капоната сос`,
+  },
+];
 
+export function RSVPForm({ api_key, invite, maxGuests }: Props) {
   const hasElapsed = Date.now() > invite.answerUntilTimestamp;
 
   const answerUntil = new Date(invite.answerUntilTimestamp);
-  const textAnswerUntilDate = answerUntil.toLocaleDateString('bg-BG', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+  const textAnswerUntilDate = answerUntil.toLocaleDateString("bg-BG", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
-
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -53,23 +100,33 @@ export function RSVPForm({ api_key, invite }: Props) {
     phone: "",
     attendance: "",
     needsAccommodation: "",
-    specialMessage: ""
+    specialMessage: "",
   });
 
   const [guests, setGuests] = useState<Guest[]>([
-    { id: Date.now().toString(), firstName: "", lastName: "", isChild: false, menuPreference: "" }
+    {
+      id: Date.now().toString(),
+      firstName: "",
+      lastName: "",
+      isChild: false,
+      menuPreference: "",
+    },
   ]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (formData.attendance === "yes") {
-      setGuests(prev =>
+      setGuests((prev) =>
         prev.map((g, i) =>
           i === 0
-            ? { ...g, firstName: formData.firstName, lastName: formData.lastName }
-            : g
-        )
+            ? {
+                ...g,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+              }
+            : g,
+        ),
       );
     }
   }, [formData.firstName, formData.lastName, formData.attendance]);
@@ -77,7 +134,12 @@ export function RSVPForm({ api_key, invite }: Props) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.firstName || !formData.lastName || !formData.phone || !formData.attendance) {
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.phone ||
+      !formData.attendance
+    ) {
       toast.error("Моля, попълнете всички задължителни полета");
       return;
     }
@@ -85,7 +147,7 @@ export function RSVPForm({ api_key, invite }: Props) {
     if (formData.attendance === "yes") {
       // Check guests' menuPreference
       for (const guest of guests) {
-        if (!guest.menuPreference) {
+        if (!guest.menuPreference && !guest.isChild) {
           toast.error("Моля, изберете предпочитано меню за всеки гост");
           return;
         }
@@ -105,7 +167,10 @@ export function RSVPForm({ api_key, invite }: Props) {
       attendance: formData.attendance === "yes",
       needsAccommodation: formData.needsAccommodation === "yes",
       specialMessage: formData.specialMessage,
-      guests,
+      guests: guests.map((g) => ({
+        ...g,
+        menuPreference: g.isChild ? undefined : g.menuPreference,
+      })),
     };
     setLoading(true);
     fetch(
@@ -114,20 +179,25 @@ export function RSVPForm({ api_key, invite }: Props) {
         redirect: "follow",
         method: "POST",
         body: JSON.stringify(submission),
-      }
-    ).then((response) => {
-      toast.success("Благодарим за Вашето потвърждение! Очакваме с нетърпение да празнуваме заедно!");
-      setSubmitted(true);
-    }).catch((err) => {
-      console.log("Error submitting RSVP:", err);
-      toast.error("Възникна грешка при изпращането. Моля, опитайте отново.");
-    }).finally(() => {
-      setLoading(false);
-    });
+      },
+    )
+      .then((response) => {
+        toast.success(
+          "Благодарим за Вашето потвърждение! Очакваме с нетърпение да празнуваме заедно!",
+        );
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        console.log("Error submitting RSVP:", err);
+        toast.error("Възникна грешка при изпращането. Моля, опитайте отново.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleFormChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const addGuest = () => {
@@ -136,19 +206,27 @@ export function RSVPForm({ api_key, invite }: Props) {
       firstName: "",
       lastName: "",
       isChild: false,
-      menuPreference: ""
+      menuPreference: "",
     };
-    setGuests(prev => [...prev, newGuest]);
+    setGuests((prev) => [...prev, newGuest]);
   };
 
   const removeGuest = (id: string) => {
     if (guests.length > 1) {
-      setGuests(prev => prev.filter(guest => guest.id !== id));
+      setGuests((prev) => prev.filter((guest) => guest.id !== id));
     }
   };
 
-  const updateGuest = (id: string, field: keyof Guest, value: string | boolean) => {
-    setGuests(prev => prev.map(guest => (guest.id === id ? { ...guest, [field]: value } : guest)));
+  const updateGuest = (
+    id: string,
+    field: keyof Guest,
+    value: string | boolean,
+  ) => {
+    setGuests((prev) =>
+      prev.map((guest) =>
+        guest.id === id ? { ...guest, [field]: value } : guest,
+      ),
+    );
   };
 
   return (
@@ -160,21 +238,32 @@ export function RSVPForm({ api_key, invite }: Props) {
               <Users size={16} className="text-parchment" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl mb-4 text-olivewood">Форма за потвърждение на присъствие</h2>
-          <p className="text-lg text-bark">Моля, отговорете до {textAnswerUntilDate}.</p>
+          <h2 className="text-3xl md:text-4xl mb-4 text-olivewood">
+            Форма за потвърждение на присъствие
+          </h2>
+          <p className="text-lg text-bark">
+            Моля, отговорете до {textAnswerUntilDate}
+          </p>
         </div>
 
         {hasElapsed ? (
           <Card className="p-8 bg-wedding-white border-sand shadow-xl text-center">
-            <h3 className="text-2xl text-sage mb-4">Времето за потвърждение изтече</h3>
+            <h3 className="text-2xl text-sage mb-4">
+              Времето за потвърждение изтече
+            </h3>
             <p className="text-bark">
-              Моля, свържете се с младоженците, ако все още желаете да потвърдите присъствие.
+              Моля, свържете се с младоженците, ако все още желаете да
+              потвърдите присъствие.
             </p>
           </Card>
         ) : submitted ? (
           <Card className="p-8 bg-wedding-white border-sand shadow-xl text-center">
-            <h3 className="text-2xl text-sage mb-4">Благодарим за Вашето потвърждение!</h3>
-            <p className="text-bark">Очакваме с нетърпение да празнуваме заедно!</p>
+            <h3 className="text-2xl text-sage mb-4">
+              Благодарим за Вашето потвърждение!
+            </h3>
+            <p className="text-bark">
+              Очакваме с нетърпение да празнуваме заедно!
+            </p>
           </Card>
         ) : (
           <Card className="p-8 bg-wedding-white border-sand shadow-xl rounded-md">
@@ -182,11 +271,15 @@ export function RSVPForm({ api_key, invite }: Props) {
               {/* Personal Information */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="firstName" className="text-olivewood">Име *</Label>
+                  <Label htmlFor="firstName" className="text-olivewood">
+                    Име *
+                  </Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
-                    onChange={(e) => handleFormChange("firstName", e.target.value)}
+                    onChange={(e) =>
+                      handleFormChange("firstName", e.target.value)
+                    }
                     className="mt-2 border-sand focus:border-sage h-12"
                     required
                     disabled={loading}
@@ -194,11 +287,15 @@ export function RSVPForm({ api_key, invite }: Props) {
                 </div>
 
                 <div>
-                  <Label htmlFor="lastName" className="text-olivewood">Фамилия *</Label>
+                  <Label htmlFor="lastName" className="text-olivewood">
+                    Фамилия *
+                  </Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
-                    onChange={(e) => handleFormChange("lastName", e.target.value)}
+                    onChange={(e) =>
+                      handleFormChange("lastName", e.target.value)
+                    }
                     className="mt-2 border-sand focus:border-sage h-12"
                     required
                     disabled={loading}
@@ -207,7 +304,9 @@ export function RSVPForm({ api_key, invite }: Props) {
               </div>
 
               <div>
-                <Label htmlFor="phone" className="text-olivewood">Телефон *</Label>
+                <Label htmlFor="phone" className="text-olivewood">
+                  Телефон *
+                </Label>
                 <Input
                   id="phone"
                   type="tel"
@@ -222,20 +321,36 @@ export function RSVPForm({ api_key, invite }: Props) {
 
               {/* Attendance */}
               <div>
-                <Label className="text-olivewood mb-4 block">Ще присъствате ли? *</Label>
+                <Label className="text-olivewood mb-4 block">
+                  Ще присъствате ли? *
+                </Label>
                 <RadioGroup
                   value={formData.attendance}
-                  onValueChange={(value) => handleFormChange("attendance", value)}
+                  onValueChange={(value) =>
+                    handleFormChange("attendance", value)
+                  }
                   className="flex gap-8"
                   disabled={loading}
                 >
                   <div className="flex items-center space-x-3">
-                    <RadioGroupItem value="yes" id="yes" className="border-sage text-sage w-5 h-5" />
-                    <Label htmlFor="yes" className="text-bark">Да, с удоволствие!</Label>
+                    <RadioGroupItem
+                      value="yes"
+                      id="yes"
+                      className="border-sage text-sage w-5 h-5"
+                    />
+                    <Label htmlFor="yes" className="text-bark">
+                      Да, с удоволствие!
+                    </Label>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <RadioGroupItem value="no" id="no" className="border-sage text-sage w-5 h-5" />
-                    <Label htmlFor="no" className="text-bark">Съжалявам, няма да мога да присъствам</Label>
+                    <RadioGroupItem
+                      value="no"
+                      id="no"
+                      className="border-sage text-sage w-5 h-5"
+                    />
+                    <Label htmlFor="no" className="text-bark">
+                      Съжалявам, няма да мога да присъствам
+                    </Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -247,23 +362,30 @@ export function RSVPForm({ api_key, invite }: Props) {
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-3">
                         <Users size={20} className="text-sage" />
-                        <Label className="text-olivewood text-lg">Данни за гости</Label>
+                        <Label className="text-olivewood text-lg">
+                          Данни за гости
+                        </Label>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Button
-                          type="button"
-                          onClick={addGuest}
-                          size="sm"
-                          variant="outline"
-                          className="border-sage text-sage hover:bg-sage hover:text-parchment"
-                          disabled={loading}
-                        >
-                          <Plus size={16} />
-                        </Button>
+                        {(!maxGuests || maxGuests > guests.length) && (
+                          <Button
+                            type="button"
+                            onClick={addGuest}
+                            size="sm"
+                            variant="outline"
+                            className="border-sage text-sage hover:bg-sage hover:text-parchment"
+                            disabled={loading}
+                          >
+                            <Plus size={16} />
+                          </Button>
+                        )}
+
                         {guests.length > 1 && (
                           <Button
                             type="button"
-                            onClick={() => removeGuest(guests[guests.length - 1].id)}
+                            onClick={() =>
+                              removeGuest(guests[guests.length - 1].id)
+                            }
                             size="sm"
                             variant="outline"
                             className="border-bark text-bark hover:bg-bark hover:text-parchment"
@@ -277,25 +399,44 @@ export function RSVPForm({ api_key, invite }: Props) {
 
                     <div className="space-y-6">
                       {guests.map((guest, index) => (
-                        <Card key={guest.id} className="p-6 bg-sand/20 border-sand/50">
-                          <h4 className="text-olivewood mb-4">Гост {index + 1}</h4>
+                        <Card
+                          key={guest.id}
+                          className="p-6 bg-sand/20 border-sand/50"
+                        >
+                          <h4 className="text-olivewood mb-4">
+                            Гост {index + 1}
+                          </h4>
 
                           <div className="grid md:grid-cols-2 gap-4 mb-4">
                             <div>
                               <Label className="text-olivewood">Име *</Label>
                               <Input
                                 value={guest.firstName}
-                                onChange={(e) => updateGuest(guest.id, "firstName", e.target.value)}
+                                onChange={(e) =>
+                                  updateGuest(
+                                    guest.id,
+                                    "firstName",
+                                    e.target.value,
+                                  )
+                                }
                                 className="mt-1 border-sand focus:border-sage"
                                 required={formData.attendance === "yes"}
                                 disabled={index === 0 || loading}
                               />
                             </div>
                             <div>
-                              <Label className="text-olivewood">Фамилия *</Label>
+                              <Label className="text-olivewood">
+                                Фамилия *
+                              </Label>
                               <Input
                                 value={guest.lastName}
-                                onChange={(e) => updateGuest(guest.id, "lastName", e.target.value)}
+                                onChange={(e) =>
+                                  updateGuest(
+                                    guest.id,
+                                    "lastName",
+                                    e.target.value,
+                                  )
+                                }
                                 className="mt-1 border-sand focus:border-sage"
                                 required={formData.attendance === "yes"}
                                 disabled={index === 0 || loading}
@@ -307,35 +448,65 @@ export function RSVPForm({ api_key, invite }: Props) {
                             <Checkbox
                               id={`child-${guest.id}`}
                               checked={guest.isChild}
-                              onCheckedChange={(checked) => updateGuest(guest.id, "isChild", checked as boolean)}
+                              onCheckedChange={(checked) =>
+                                updateGuest(
+                                  guest.id,
+                                  "isChild",
+                                  checked as boolean,
+                                )
+                              }
                               className="border-sage data-[state=checked]:bg-sage"
                               disabled={loading}
                             />
-                            <Label htmlFor={`child-${guest.id}`} className="text-bark">Дете (под 13 години)</Label>
+                            <Label
+                              htmlFor={`child-${guest.id}`}
+                              className="text-bark"
+                            >
+                              Дете (под 13 години)
+                            </Label>
                           </div>
 
-                          <div>
-                            <Label className="text-olivewood mb-2 flex items-center gap-2">
-                              <Utensils size={16} />
-                              Избор на меню
-                            </Label>
-                            <Select
-                              value={guest.menuPreference}
-                              onValueChange={(value) => updateGuest(guest.id, "menuPreference", value)}
-                              disabled={loading}
-                            >
-                              <SelectTrigger className="border-sand focus:border-sage bg-white">
-                                <SelectValue placeholder="Изберете предпочитано меню *" />
-                              </SelectTrigger>
-                              <SelectContent className="z-50 bg-white border border-sand shadow-md">
-                                <SelectItem value="beef">Телешко филе</SelectItem>
-                                <SelectItem value="chicken">Печено пиле с билки</SelectItem>
-                                <SelectItem value="salmon">Скара сьомга</SelectItem>
-                                <SelectItem value="vegetarian">Вегетарианско меню</SelectItem>
-                                <SelectItem value="vegan">Веган меню</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
+                          {!guest.isChild && (
+                            <div>
+                              <Label className="text-olivewood mb-2 flex items-center gap-2">
+                                <Utensils size={16} />
+                                Избор на меню
+                              </Label>
+                              <Select
+                                value={guest.menuPreference}
+                                onValueChange={(value) =>
+                                  updateGuest(guest.id, "menuPreference", value)
+                                }
+                                disabled={loading}
+                              >
+                                <SelectTrigger className="border-sand focus:border-sage bg-white text-ellipsis">
+                                  <SelectValue placeholder="Изберете предпочитано меню *" />
+                                </SelectTrigger>
+                                <SelectContent className="z-50 bg-white border border-sand shadow-md text-ellipsis">
+                                  {menus.map((menu) => (
+                                    <SelectItem
+                                      key={menu.value}
+                                      value={menu.value}
+                                      className="text-ellipsis"
+                                    >
+                                      {menu.short}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+
+                              {/* Show full menu description nicely underneath */}
+                              {guest.menuPreference && (
+                                <div className="mt-2 p-3 bg-sand/20 border border-sand rounded-md whitespace-pre-line text-sm text-bark">
+                                  {
+                                    menus.find(
+                                      (m) => m.value === guest.menuPreference,
+                                    )?.description
+                                  }
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </Card>
                       ))}
                     </div>
@@ -343,20 +514,30 @@ export function RSVPForm({ api_key, invite }: Props) {
 
                   {/* Accommodation */}
                   <div>
-                    <Label className="text-olivewood mb-4 block">Нуждаете ли се от настаняване? *</Label>
+                    <Label className="text-olivewood mb-4 block">
+                      Нуждаете ли се от настаняване? *
+                    </Label>
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <RadioGroup
                         value={formData.needsAccommodation}
-                        onValueChange={(value) => handleFormChange("needsAccommodation", value)}
+                        onValueChange={(value) =>
+                          handleFormChange("needsAccommodation", value)
+                        }
                         className="flex gap-8"
                         disabled={loading}
                       >
                         <div className="flex items-center space-x-3">
-                          <RadioGroupItem value="yes" className="border-sage text-sage" />
+                          <RadioGroupItem
+                            value="yes"
+                            className="border-sage text-sage"
+                          />
                           <Label className="text-bark">Да, моля</Label>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <RadioGroupItem value="no" className="border-sage text-sage" />
+                          <RadioGroupItem
+                            value="no"
+                            className="border-sage text-sage"
+                          />
                           <Label className="text-bark">Не, благодаря</Label>
                         </div>
                       </RadioGroup>
@@ -370,11 +551,15 @@ export function RSVPForm({ api_key, invite }: Props) {
 
               {/* Special Message */}
               <div>
-                <Label htmlFor="specialMessage" className="text-olivewood">Специални съобщения или изисквания</Label>
+                <Label htmlFor="specialMessage" className="text-olivewood">
+                  Специални съобщения или изисквания
+                </Label>
                 <Textarea
                   id="specialMessage"
                   value={formData.specialMessage}
-                  onChange={(e) => handleFormChange("specialMessage", e.target.value)}
+                  onChange={(e) =>
+                    handleFormChange("specialMessage", e.target.value)
+                  }
                   className="mt-2 border-sand focus:border-sage"
                   placeholder="Специални нужди, хранителни ограничения или съобщения за младоженците?"
                   rows={4}
@@ -382,16 +567,14 @@ export function RSVPForm({ api_key, invite }: Props) {
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-sage hover:bg-bark text-parchment h-12" size="lg" disabled={loading}>
-
-                {loading ? (
-                  <></>
-                ) : (
-                  <Send className="mr-2" size={20} />
-                )}
+              <Button
+                type="submit"
+                className="w-full bg-sage hover:bg-bark text-parchment h-12"
+                size="lg"
+                disabled={loading}
+              >
+                {loading ? <></> : <Send className="mr-2" size={20} />}
                 {loading ? "Изпращане..." : "Изпрати потвърждение"}
-
-
               </Button>
             </form>
           </Card>
