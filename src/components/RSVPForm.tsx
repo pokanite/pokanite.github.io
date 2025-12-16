@@ -31,6 +31,7 @@ interface Submission {
   phone: string;
   attendance: boolean;
   needsAccommodation: boolean;
+  accommodationType: string | undefined;
   specialMessage: string;
 
   guests: Guest[];
@@ -44,44 +45,48 @@ interface Props {
 
 const menus = [
   {
-    value: "menu1",
-    short:
-      "Меню 1 - Свинско бонфиле с ябълков сос, глазирани цветни моркови върху пюре от пащърнак",
+    value: "Меню 1 - Свинско бонфиле",
+    short: "Меню 1 - Свинско бонфиле",
     description: `Салата с розов домат, мус от сирена с орехи и пресни билки, краставици и червени печени чушки, поднесено с пресни брускети
 Ролс от тиквички и патладжан с биволска моцарела, кедрови ядки и балсамова редукция
 Свинско бонфиле с ябълков сос, глазирани цветни моркови върху пюре от пащърнак`,
   },
   {
-    value: "menu2",
-    short:
-      "Меню 2 - Пилешко филе с картофен мус с трюфел върху канапе от гъбено рагу и гриловани сезонни зеленчуци",
+    value: "Меню 2 - Пилешко филе",
+    short: "Меню 2 - Пилешко филе",
     description: `Микс свежи салати с грилован Камембер, цветни чери домати и пресни зеленчуци
 Спаначена рулдина с мус от сьомга и каперси
 Пилешко филе с картофен мус с трюфел върху канапе от гъбено рагу и гриловани сезонни зеленчуци`,
   },
   {
-    value: "vegetarian",
-    short:
-      "Вегетарианско меню - Ризото със спанак, сушени домати, аспержи, маслини и пармезан",
+    value: "Вегетарианско меню - Ризото",
+    short: "Вегетарианско меню - Ризото",
     description: `Свеж салатен микс с козе сирене, репички, фенел и портокалови филенца
 Равиоли със спанак и рикота, пармезан и маслен сос
 Ризото със спанак, сушени домати, аспержи, маслини и пармезан`,
   },
   {
-    value: "salmon_menu",
-    short:
-      "Вегетарианско меню - Сьомга върху канапе от мачкани билкови картофи",
+    value: "Вегетарианско меню - Сьомга",
+    short: "Вегетарианско меню - Сьомга",
     description: `Свеж салатен микс с козе сирене, репички, фенел и портокалови филенца
 Равиоли със спанак и рикота, пармезан и маслен сос
 Сьомга върху канапе от мачкани билкови картофи, снежен грах и тиквичка с лимоново-босилекова емулсия`,
   },
   {
-    value: "vegan",
-    short: "Веганско меню - Стек от карфиол, фава пюре и Капоната сос",
+    value: "Веганско меню",
+    short: "Веганско меню",
     description: `Киноа с печени тиквички, патладжан, чушки, свежа салата, чери домати, микс семена и дресинг
 Авокадо с манго салца, зеленчуков чипс и амарант
 Стек от карфиол, фава пюре и Капоната сос`,
   },
+];
+
+const accommodationOptions = [
+  {
+    value: "double",
+    label: "105 евро - двойна стая със закуска и спа центъра",
+  },
+  { value: "triple", label: "115 евро - тройна стая" },
 ];
 
 export function RSVPForm({ api_key, invite, maxGuests }: Props) {
@@ -114,6 +119,7 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
   ]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [accommodationType, setAccommodationType] = useState("double");
 
   useEffect(() => {
     if (formData.attendance === "yes") {
@@ -166,11 +172,13 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
       phone: formData.phone,
       attendance: formData.attendance === "yes",
       needsAccommodation: formData.needsAccommodation === "yes",
+      accommodationType:
+        formData.needsAccommodation === "yes" ? accommodationType : undefined,
       specialMessage: formData.specialMessage,
-      guests: guests.map((g) => ({
+      guests: formData.attendance === "yes" ? guests.map((g) => ({
         ...g,
         menuPreference: g.isChild ? undefined : g.menuPreference,
-      })),
+      })) : [{ ...guests[0], firstName: formData.firstName, lastName: formData.lastName, menuPreference: undefined }],
     };
     setLoading(true);
     fetch(
@@ -497,12 +505,20 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
 
                               {/* Show full menu description nicely underneath */}
                               {guest.menuPreference && (
-                                <div className="mt-2 p-3 bg-sand/20 border border-sand rounded-md whitespace-pre-line text-sm text-bark">
-                                  {
-                                    menus.find(
+                                <div className="mt-2 p-3 bg-sand/20 border border-sand rounded-md text-sm text-bark">
+                                  {menus
+                                    .find(
                                       (m) => m.value === guest.menuPreference,
-                                    )?.description
-                                  }
+                                    )
+                                    ?.description.split("\n")
+                                    .map((line, idx) => (
+                                      <div
+                                        key={idx}
+                                        className={idx === 0 ? "" : "mt-2"}
+                                      >
+                                        {line}
+                                      </div>
+                                    ))}
                                 </div>
                               )}
                             </div>
@@ -546,6 +562,30 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
                       </p>
                     </div>
                   </div>
+
+                  {formData.needsAccommodation === "yes" && (
+                    <div className="mt-4">
+                      <Label className="text-olivewood mb-2 block">
+                        Изберете тип стая *
+                      </Label>
+                      <Select
+                        value={accommodationType}
+                        onValueChange={(value) => setAccommodationType(value)}
+                        disabled={loading}
+                      >
+                        <SelectTrigger className="border-sand focus:border-sage bg-white text-ellipsis">
+                          <SelectValue placeholder="Изберете стая" />
+                        </SelectTrigger>
+                        <SelectContent className="z-50 bg-white border border-sand shadow-md">
+                          {accommodationOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                 </>
               )}
 
