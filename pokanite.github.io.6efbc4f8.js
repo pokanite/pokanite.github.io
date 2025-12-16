@@ -18662,39 +18662,49 @@ var _sonner = require("sonner");
 var _s = $RefreshSig$();
 const menus = [
     {
-        value: "menu1",
-        short: "\u041C\u0435\u043D\u044E 1 - \u0421\u0432\u0438\u043D\u0441\u043A\u043E \u0431\u043E\u043D\u0444\u0438\u043B\u0435 \u0441 \u044F\u0431\u044A\u043B\u043A\u043E\u0432 \u0441\u043E\u0441, \u0433\u043B\u0430\u0437\u0438\u0440\u0430\u043D\u0438 \u0446\u0432\u0435\u0442\u043D\u0438 \u043C\u043E\u0440\u043A\u043E\u0432\u0438 \u0432\u044A\u0440\u0445\u0443 \u043F\u044E\u0440\u0435 \u043E\u0442 \u043F\u0430\u0449\u044A\u0440\u043D\u0430\u043A",
+        value: "\u041C\u0435\u043D\u044E 1 - \u0421\u0432\u0438\u043D\u0441\u043A\u043E \u0431\u043E\u043D\u0444\u0438\u043B\u0435",
+        short: "\u041C\u0435\u043D\u044E 1 - \u0421\u0432\u0438\u043D\u0441\u043A\u043E \u0431\u043E\u043D\u0444\u0438\u043B\u0435",
         description: `\u{421}\u{430}\u{43B}\u{430}\u{442}\u{430} \u{441} \u{440}\u{43E}\u{437}\u{43E}\u{432} \u{434}\u{43E}\u{43C}\u{430}\u{442}, \u{43C}\u{443}\u{441} \u{43E}\u{442} \u{441}\u{438}\u{440}\u{435}\u{43D}\u{430} \u{441} \u{43E}\u{440}\u{435}\u{445}\u{438} \u{438} \u{43F}\u{440}\u{435}\u{441}\u{43D}\u{438} \u{431}\u{438}\u{43B}\u{43A}\u{438}, \u{43A}\u{440}\u{430}\u{441}\u{442}\u{430}\u{432}\u{438}\u{446}\u{438} \u{438} \u{447}\u{435}\u{440}\u{432}\u{435}\u{43D}\u{438} \u{43F}\u{435}\u{447}\u{435}\u{43D}\u{438} \u{447}\u{443}\u{448}\u{43A}\u{438}, \u{43F}\u{43E}\u{434}\u{43D}\u{435}\u{441}\u{435}\u{43D}\u{43E} \u{441} \u{43F}\u{440}\u{435}\u{441}\u{43D}\u{438} \u{431}\u{440}\u{443}\u{441}\u{43A}\u{435}\u{442}\u{438}
 \u{420}\u{43E}\u{43B}\u{441} \u{43E}\u{442} \u{442}\u{438}\u{43A}\u{432}\u{438}\u{447}\u{43A}\u{438} \u{438} \u{43F}\u{430}\u{442}\u{43B}\u{430}\u{434}\u{436}\u{430}\u{43D} \u{441} \u{431}\u{438}\u{432}\u{43E}\u{43B}\u{441}\u{43A}\u{430} \u{43C}\u{43E}\u{446}\u{430}\u{440}\u{435}\u{43B}\u{430}, \u{43A}\u{435}\u{434}\u{440}\u{43E}\u{432}\u{438} \u{44F}\u{434}\u{43A}\u{438} \u{438} \u{431}\u{430}\u{43B}\u{441}\u{430}\u{43C}\u{43E}\u{432}\u{430} \u{440}\u{435}\u{434}\u{443}\u{43A}\u{446}\u{438}\u{44F}
 \u{421}\u{432}\u{438}\u{43D}\u{441}\u{43A}\u{43E} \u{431}\u{43E}\u{43D}\u{444}\u{438}\u{43B}\u{435} \u{441} \u{44F}\u{431}\u{44A}\u{43B}\u{43A}\u{43E}\u{432} \u{441}\u{43E}\u{441}, \u{433}\u{43B}\u{430}\u{437}\u{438}\u{440}\u{430}\u{43D}\u{438} \u{446}\u{432}\u{435}\u{442}\u{43D}\u{438} \u{43C}\u{43E}\u{440}\u{43A}\u{43E}\u{432}\u{438} \u{432}\u{44A}\u{440}\u{445}\u{443} \u{43F}\u{44E}\u{440}\u{435} \u{43E}\u{442} \u{43F}\u{430}\u{449}\u{44A}\u{440}\u{43D}\u{430}\u{43A}`
     },
     {
-        value: "menu2",
-        short: "\u041C\u0435\u043D\u044E 2 - \u041F\u0438\u043B\u0435\u0448\u043A\u043E \u0444\u0438\u043B\u0435 \u0441 \u043A\u0430\u0440\u0442\u043E\u0444\u0435\u043D \u043C\u0443\u0441 \u0441 \u0442\u0440\u044E\u0444\u0435\u043B \u0432\u044A\u0440\u0445\u0443 \u043A\u0430\u043D\u0430\u043F\u0435 \u043E\u0442 \u0433\u044A\u0431\u0435\u043D\u043E \u0440\u0430\u0433\u0443 \u0438 \u0433\u0440\u0438\u043B\u043E\u0432\u0430\u043D\u0438 \u0441\u0435\u0437\u043E\u043D\u043D\u0438 \u0437\u0435\u043B\u0435\u043D\u0447\u0443\u0446\u0438",
+        value: "\u041C\u0435\u043D\u044E 2 - \u041F\u0438\u043B\u0435\u0448\u043A\u043E \u0444\u0438\u043B\u0435",
+        short: "\u041C\u0435\u043D\u044E 2 - \u041F\u0438\u043B\u0435\u0448\u043A\u043E \u0444\u0438\u043B\u0435",
         description: `\u{41C}\u{438}\u{43A}\u{441} \u{441}\u{432}\u{435}\u{436}\u{438} \u{441}\u{430}\u{43B}\u{430}\u{442}\u{438} \u{441} \u{433}\u{440}\u{438}\u{43B}\u{43E}\u{432}\u{430}\u{43D} \u{41A}\u{430}\u{43C}\u{435}\u{43C}\u{431}\u{435}\u{440}, \u{446}\u{432}\u{435}\u{442}\u{43D}\u{438} \u{447}\u{435}\u{440}\u{438} \u{434}\u{43E}\u{43C}\u{430}\u{442}\u{438} \u{438} \u{43F}\u{440}\u{435}\u{441}\u{43D}\u{438} \u{437}\u{435}\u{43B}\u{435}\u{43D}\u{447}\u{443}\u{446}\u{438}
 \u{421}\u{43F}\u{430}\u{43D}\u{430}\u{447}\u{435}\u{43D}\u{430} \u{440}\u{443}\u{43B}\u{434}\u{438}\u{43D}\u{430} \u{441} \u{43C}\u{443}\u{441} \u{43E}\u{442} \u{441}\u{44C}\u{43E}\u{43C}\u{433}\u{430} \u{438} \u{43A}\u{430}\u{43F}\u{435}\u{440}\u{441}\u{438}
 \u{41F}\u{438}\u{43B}\u{435}\u{448}\u{43A}\u{43E} \u{444}\u{438}\u{43B}\u{435} \u{441} \u{43A}\u{430}\u{440}\u{442}\u{43E}\u{444}\u{435}\u{43D} \u{43C}\u{443}\u{441} \u{441} \u{442}\u{440}\u{44E}\u{444}\u{435}\u{43B} \u{432}\u{44A}\u{440}\u{445}\u{443} \u{43A}\u{430}\u{43D}\u{430}\u{43F}\u{435} \u{43E}\u{442} \u{433}\u{44A}\u{431}\u{435}\u{43D}\u{43E} \u{440}\u{430}\u{433}\u{443} \u{438} \u{433}\u{440}\u{438}\u{43B}\u{43E}\u{432}\u{430}\u{43D}\u{438} \u{441}\u{435}\u{437}\u{43E}\u{43D}\u{43D}\u{438} \u{437}\u{435}\u{43B}\u{435}\u{43D}\u{447}\u{443}\u{446}\u{438}`
     },
     {
-        value: "vegetarian",
-        short: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0420\u0438\u0437\u043E\u0442\u043E \u0441\u044A\u0441 \u0441\u043F\u0430\u043D\u0430\u043A, \u0441\u0443\u0448\u0435\u043D\u0438 \u0434\u043E\u043C\u0430\u0442\u0438, \u0430\u0441\u043F\u0435\u0440\u0436\u0438, \u043C\u0430\u0441\u043B\u0438\u043D\u0438 \u0438 \u043F\u0430\u0440\u043C\u0435\u0437\u0430\u043D",
+        value: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0420\u0438\u0437\u043E\u0442\u043E",
+        short: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0420\u0438\u0437\u043E\u0442\u043E",
         description: `\u{421}\u{432}\u{435}\u{436} \u{441}\u{430}\u{43B}\u{430}\u{442}\u{435}\u{43D} \u{43C}\u{438}\u{43A}\u{441} \u{441} \u{43A}\u{43E}\u{437}\u{435} \u{441}\u{438}\u{440}\u{435}\u{43D}\u{435}, \u{440}\u{435}\u{43F}\u{438}\u{447}\u{43A}\u{438}, \u{444}\u{435}\u{43D}\u{435}\u{43B} \u{438} \u{43F}\u{43E}\u{440}\u{442}\u{43E}\u{43A}\u{430}\u{43B}\u{43E}\u{432}\u{438} \u{444}\u{438}\u{43B}\u{435}\u{43D}\u{446}\u{430}
 \u{420}\u{430}\u{432}\u{438}\u{43E}\u{43B}\u{438} \u{441}\u{44A}\u{441} \u{441}\u{43F}\u{430}\u{43D}\u{430}\u{43A} \u{438} \u{440}\u{438}\u{43A}\u{43E}\u{442}\u{430}, \u{43F}\u{430}\u{440}\u{43C}\u{435}\u{437}\u{430}\u{43D} \u{438} \u{43C}\u{430}\u{441}\u{43B}\u{435}\u{43D} \u{441}\u{43E}\u{441}
 \u{420}\u{438}\u{437}\u{43E}\u{442}\u{43E} \u{441}\u{44A}\u{441} \u{441}\u{43F}\u{430}\u{43D}\u{430}\u{43A}, \u{441}\u{443}\u{448}\u{435}\u{43D}\u{438} \u{434}\u{43E}\u{43C}\u{430}\u{442}\u{438}, \u{430}\u{441}\u{43F}\u{435}\u{440}\u{436}\u{438}, \u{43C}\u{430}\u{441}\u{43B}\u{438}\u{43D}\u{438} \u{438} \u{43F}\u{430}\u{440}\u{43C}\u{435}\u{437}\u{430}\u{43D}`
     },
     {
-        value: "salmon_menu",
-        short: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0421\u044C\u043E\u043C\u0433\u0430 \u0432\u044A\u0440\u0445\u0443 \u043A\u0430\u043D\u0430\u043F\u0435 \u043E\u0442 \u043C\u0430\u0447\u043A\u0430\u043D\u0438 \u0431\u0438\u043B\u043A\u043E\u0432\u0438 \u043A\u0430\u0440\u0442\u043E\u0444\u0438",
+        value: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0421\u044C\u043E\u043C\u0433\u0430",
+        short: "\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0421\u044C\u043E\u043C\u0433\u0430",
         description: `\u{421}\u{432}\u{435}\u{436} \u{441}\u{430}\u{43B}\u{430}\u{442}\u{435}\u{43D} \u{43C}\u{438}\u{43A}\u{441} \u{441} \u{43A}\u{43E}\u{437}\u{435} \u{441}\u{438}\u{440}\u{435}\u{43D}\u{435}, \u{440}\u{435}\u{43F}\u{438}\u{447}\u{43A}\u{438}, \u{444}\u{435}\u{43D}\u{435}\u{43B} \u{438} \u{43F}\u{43E}\u{440}\u{442}\u{43E}\u{43A}\u{430}\u{43B}\u{43E}\u{432}\u{438} \u{444}\u{438}\u{43B}\u{435}\u{43D}\u{446}\u{430}
 \u{420}\u{430}\u{432}\u{438}\u{43E}\u{43B}\u{438} \u{441}\u{44A}\u{441} \u{441}\u{43F}\u{430}\u{43D}\u{430}\u{43A} \u{438} \u{440}\u{438}\u{43A}\u{43E}\u{442}\u{430}, \u{43F}\u{430}\u{440}\u{43C}\u{435}\u{437}\u{430}\u{43D} \u{438} \u{43C}\u{430}\u{441}\u{43B}\u{435}\u{43D} \u{441}\u{43E}\u{441}
 \u{421}\u{44C}\u{43E}\u{43C}\u{433}\u{430} \u{432}\u{44A}\u{440}\u{445}\u{443} \u{43A}\u{430}\u{43D}\u{430}\u{43F}\u{435} \u{43E}\u{442} \u{43C}\u{430}\u{447}\u{43A}\u{430}\u{43D}\u{438} \u{431}\u{438}\u{43B}\u{43A}\u{43E}\u{432}\u{438} \u{43A}\u{430}\u{440}\u{442}\u{43E}\u{444}\u{438}, \u{441}\u{43D}\u{435}\u{436}\u{435}\u{43D} \u{433}\u{440}\u{430}\u{445} \u{438} \u{442}\u{438}\u{43A}\u{432}\u{438}\u{447}\u{43A}\u{430} \u{441} \u{43B}\u{438}\u{43C}\u{43E}\u{43D}\u{43E}\u{432}\u{43E}-\u{431}\u{43E}\u{441}\u{438}\u{43B}\u{435}\u{43A}\u{43E}\u{432}\u{430} \u{435}\u{43C}\u{443}\u{43B}\u{441}\u{438}\u{44F}`
     },
     {
-        value: "vegan",
-        short: "\u0412\u0435\u0433\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E - \u0421\u0442\u0435\u043A \u043E\u0442 \u043A\u0430\u0440\u0444\u0438\u043E\u043B, \u0444\u0430\u0432\u0430 \u043F\u044E\u0440\u0435 \u0438 \u041A\u0430\u043F\u043E\u043D\u0430\u0442\u0430 \u0441\u043E\u0441",
+        value: "\u0412\u0435\u0433\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E",
+        short: "\u0412\u0435\u0433\u0430\u043D\u0441\u043A\u043E \u043C\u0435\u043D\u044E",
         description: `\u{41A}\u{438}\u{43D}\u{43E}\u{430} \u{441} \u{43F}\u{435}\u{447}\u{435}\u{43D}\u{438} \u{442}\u{438}\u{43A}\u{432}\u{438}\u{447}\u{43A}\u{438}, \u{43F}\u{430}\u{442}\u{43B}\u{430}\u{434}\u{436}\u{430}\u{43D}, \u{447}\u{443}\u{448}\u{43A}\u{438}, \u{441}\u{432}\u{435}\u{436}\u{430} \u{441}\u{430}\u{43B}\u{430}\u{442}\u{430}, \u{447}\u{435}\u{440}\u{438} \u{434}\u{43E}\u{43C}\u{430}\u{442}\u{438}, \u{43C}\u{438}\u{43A}\u{441} \u{441}\u{435}\u{43C}\u{435}\u{43D}\u{430} \u{438} \u{434}\u{440}\u{435}\u{441}\u{438}\u{43D}\u{433}
 \u{410}\u{432}\u{43E}\u{43A}\u{430}\u{434}\u{43E} \u{441} \u{43C}\u{430}\u{43D}\u{433}\u{43E} \u{441}\u{430}\u{43B}\u{446}\u{430}, \u{437}\u{435}\u{43B}\u{435}\u{43D}\u{447}\u{443}\u{43A}\u{43E}\u{432} \u{447}\u{438}\u{43F}\u{441} \u{438} \u{430}\u{43C}\u{430}\u{440}\u{430}\u{43D}\u{442}
 \u{421}\u{442}\u{435}\u{43A} \u{43E}\u{442} \u{43A}\u{430}\u{440}\u{444}\u{438}\u{43E}\u{43B}, \u{444}\u{430}\u{432}\u{430} \u{43F}\u{44E}\u{440}\u{435} \u{438} \u{41A}\u{430}\u{43F}\u{43E}\u{43D}\u{430}\u{442}\u{430} \u{441}\u{43E}\u{441}`
+    }
+];
+const accommodationOptions = [
+    {
+        value: "double",
+        label: "105 \u0435\u0432\u0440\u043E - \u0434\u0432\u043E\u0439\u043D\u0430 \u0441\u0442\u0430\u044F \u0441\u044A\u0441 \u0437\u0430\u043A\u0443\u0441\u043A\u0430 \u0438 \u0441\u043F\u0430 \u0446\u0435\u043D\u0442\u044A\u0440\u0430"
+    },
+    {
+        value: "triple",
+        label: "115 \u0435\u0432\u0440\u043E - \u0442\u0440\u043E\u0439\u043D\u0430 \u0441\u0442\u0430\u044F"
     }
 ];
 function RSVPForm({ api_key, invite, maxGuests }) {
@@ -18725,6 +18735,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
     ]);
     const [loading, setLoading] = (0, _react.useState)(false);
     const [submitted, setSubmitted] = (0, _react.useState)(false);
+    const [accommodationType, setAccommodationType] = (0, _react.useState)("double");
     (0, _react.useEffect)(()=>{
         if (formData.attendance === "yes") setGuests((prev)=>prev.map((g, i)=>i === 0 ? {
                     ...g,
@@ -18760,11 +18771,19 @@ function RSVPForm({ api_key, invite, maxGuests }) {
             phone: formData.phone,
             attendance: formData.attendance === "yes",
             needsAccommodation: formData.needsAccommodation === "yes",
+            accommodationType: formData.needsAccommodation === "yes" ? accommodationType : undefined,
             specialMessage: formData.specialMessage,
-            guests: guests.map((g)=>({
+            guests: formData.attendance === "yes" ? guests.map((g)=>({
                     ...g,
                     menuPreference: g.isChild ? undefined : g.menuPreference
-                }))
+                })) : [
+                {
+                    ...guests[0],
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    menuPreference: undefined
+                }
+            ]
         };
         setLoading(true);
         fetch(`https://script.google.com/macros/s/${invite.googleScriptRSVP}/exec?key=${api_key}`, {
@@ -18827,17 +18846,17 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                     className: "text-parchment"
                                 }, void 0, false, {
                                     fileName: "src/components/RSVPForm.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 246,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 237,
+                                lineNumber: 245,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 236,
+                            lineNumber: 244,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -18845,7 +18864,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             children: "\u0424\u043E\u0440\u043C\u0430 \u0437\u0430 \u043F\u043E\u0442\u0432\u044A\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043D\u0430 \u043F\u0440\u0438\u0441\u044A\u0441\u0442\u0432\u0438\u0435"
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 241,
+                            lineNumber: 249,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -18856,13 +18875,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 244,
+                            lineNumber: 252,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/RSVPForm.tsx",
-                    lineNumber: 235,
+                    lineNumber: 243,
                     columnNumber: 9
                 }, this),
                 hasElapsed ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _card.Card), {
@@ -18873,7 +18892,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             children: "\u0412\u0440\u0435\u043C\u0435\u0442\u043E \u0437\u0430 \u043F\u043E\u0442\u0432\u044A\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u0438\u0437\u0442\u0435\u0447\u0435"
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 251,
+                            lineNumber: 259,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -18881,13 +18900,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             children: "\u041C\u043E\u043B\u044F, \u0441\u0432\u044A\u0440\u0436\u0435\u0442\u0435 \u0441\u0435 \u0441 \u043C\u043B\u0430\u0434\u043E\u0436\u0435\u043D\u0446\u0438\u0442\u0435, \u0430\u043A\u043E \u0432\u0441\u0435 \u043E\u0449\u0435 \u0436\u0435\u043B\u0430\u0435\u0442\u0435 \u0434\u0430 \u043F\u043E\u0442\u0432\u044A\u0440\u0434\u0438\u0442\u0435 \u043F\u0440\u0438\u0441\u044A\u0441\u0442\u0432\u0438\u0435."
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 254,
+                            lineNumber: 262,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/RSVPForm.tsx",
-                    lineNumber: 250,
+                    lineNumber: 258,
                     columnNumber: 11
                 }, this) : submitted ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _card.Card), {
                     className: "p-8 bg-wedding-white border-sand shadow-xl text-center",
@@ -18897,7 +18916,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             children: "\u0411\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u0438\u043C \u0437\u0430 \u0412\u0430\u0448\u0435\u0442\u043E \u043F\u043E\u0442\u0432\u044A\u0440\u0436\u0434\u0435\u043D\u0438\u0435!"
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 261,
+                            lineNumber: 269,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -18905,13 +18924,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                             children: "\u041E\u0447\u0430\u043A\u0432\u0430\u043C\u0435 \u0441 \u043D\u0435\u0442\u044A\u0440\u043F\u0435\u043D\u0438\u0435 \u0434\u0430 \u043F\u0440\u0430\u0437\u043D\u0443\u0432\u0430\u043C\u0435 \u0437\u0430\u0435\u0434\u043D\u043E!"
                         }, void 0, false, {
                             fileName: "src/components/RSVPForm.tsx",
-                            lineNumber: 264,
+                            lineNumber: 272,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/RSVPForm.tsx",
-                    lineNumber: 260,
+                    lineNumber: 268,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _card.Card), {
                     className: "p-8 bg-wedding-white border-sand shadow-xl rounded-md",
@@ -18930,7 +18949,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                 children: "\u0418\u043C\u0435 *"
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 274,
+                                                lineNumber: 282,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _input.Input), {
@@ -18942,13 +18961,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                 disabled: loading
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 285,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 273,
+                                        lineNumber: 281,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18959,7 +18978,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                 children: "\u0424\u0430\u043C\u0438\u043B\u0438\u044F *"
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 290,
+                                                lineNumber: 298,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _input.Input), {
@@ -18971,19 +18990,19 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                 disabled: loading
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 301,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 289,
+                                        lineNumber: 297,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 272,
+                                lineNumber: 280,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18994,7 +19013,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         children: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D *"
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 307,
+                                        lineNumber: 315,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _input.Input), {
@@ -19008,13 +19027,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         disabled: loading
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 310,
+                                        lineNumber: 318,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 306,
+                                lineNumber: 314,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19024,7 +19043,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         children: "\u0429\u0435 \u043F\u0440\u0438\u0441\u044A\u0441\u0442\u0432\u0430\u0442\u0435 \u043B\u0438? *"
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 324,
+                                        lineNumber: 332,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _radioGroup.RadioGroup), {
@@ -19042,7 +19061,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                         className: "border-sage text-sage w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 336,
+                                                        lineNumber: 344,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19051,13 +19070,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                         children: "\u0414\u0430, \u0441 \u0443\u0434\u043E\u0432\u043E\u043B\u0441\u0442\u0432\u0438\u0435!"
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 341,
+                                                        lineNumber: 349,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 335,
+                                                lineNumber: 343,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19069,7 +19088,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                         className: "border-sage text-sage w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 346,
+                                                        lineNumber: 354,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19078,25 +19097,25 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                         children: "\u0421\u044A\u0436\u0430\u043B\u044F\u0432\u0430\u043C, \u043D\u044F\u043C\u0430 \u0434\u0430 \u043C\u043E\u0433\u0430 \u0434\u0430 \u043F\u0440\u0438\u0441\u044A\u0441\u0442\u0432\u0430\u043C"
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 351,
+                                                        lineNumber: 359,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 345,
+                                                lineNumber: 353,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 327,
+                                        lineNumber: 335,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 323,
+                                lineNumber: 331,
                                 columnNumber: 15
                             }, this),
                             formData.attendance === "yes" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -19115,7 +19134,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                 className: "text-sage"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 364,
+                                                                lineNumber: 372,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19123,13 +19142,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                 children: "\u0414\u0430\u043D\u043D\u0438 \u0437\u0430 \u0433\u043E\u0441\u0442\u0438"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 365,
+                                                                lineNumber: 373,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 363,
+                                                        lineNumber: 371,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19146,12 +19165,12 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                     size: 16
                                                                 }, void 0, false, {
                                                                     fileName: "src/components/RSVPForm.tsx",
-                                                                    lineNumber: 379,
+                                                                    lineNumber: 387,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 371,
+                                                                lineNumber: 379,
                                                                 columnNumber: 27
                                                             }, this),
                                                             guests.length > 1 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -19165,24 +19184,24 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                     size: 16
                                                                 }, void 0, false, {
                                                                     fileName: "src/components/RSVPForm.tsx",
-                                                                    lineNumber: 394,
+                                                                    lineNumber: 402,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 384,
+                                                                lineNumber: 392,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 369,
+                                                        lineNumber: 377,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 362,
+                                                lineNumber: 370,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19198,7 +19217,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 406,
+                                                                lineNumber: 414,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19211,7 +19230,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                 children: "\u0418\u043C\u0435 *"
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 412,
+                                                                                lineNumber: 420,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _input.Input), {
@@ -19222,13 +19241,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                 disabled: index === 0 || loading
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 413,
+                                                                                lineNumber: 421,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 411,
+                                                                        lineNumber: 419,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19238,7 +19257,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                 children: "\u0424\u0430\u043C\u0438\u043B\u0438\u044F *"
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 428,
+                                                                                lineNumber: 436,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _input.Input), {
@@ -19249,19 +19268,19 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                 disabled: index === 0 || loading
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 431,
+                                                                                lineNumber: 439,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 427,
+                                                                        lineNumber: 435,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 410,
+                                                                lineNumber: 418,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19275,7 +19294,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         disabled: loading
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 448,
+                                                                        lineNumber: 456,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19284,13 +19303,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         children: "\u0414\u0435\u0442\u0435 (\u043F\u043E\u0434 13 \u0433\u043E\u0434\u0438\u043D\u0438)"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 461,
+                                                                        lineNumber: 469,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 447,
+                                                                lineNumber: 455,
                                                                 columnNumber: 27
                                                             }, this),
                                                             !guest.isChild && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19302,14 +19321,14 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                 size: 16
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 472,
+                                                                                lineNumber: 480,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043C\u0435\u043D\u044E"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 471,
+                                                                        lineNumber: 479,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.Select), {
@@ -19323,12 +19342,12 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                     placeholder: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u043F\u0440\u0435\u0434\u043F\u043E\u0447\u0438\u0442\u0430\u043D\u043E \u043C\u0435\u043D\u044E *"
                                                                                 }, void 0, false, {
                                                                                     fileName: "src/components/RSVPForm.tsx",
-                                                                                    lineNumber: 483,
+                                                                                    lineNumber: 491,
                                                                                     columnNumber: 35
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 482,
+                                                                                lineNumber: 490,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectContent), {
@@ -19339,49 +19358,56 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                                         children: menu.short
                                                                                     }, menu.value, false, {
                                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                                        lineNumber: 487,
+                                                                                        lineNumber: 495,
                                                                                         columnNumber: 37
                                                                                     }, this))
                                                                             }, void 0, false, {
                                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                                lineNumber: 485,
+                                                                                lineNumber: 493,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 475,
+                                                                        lineNumber: 483,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     guest.menuPreference && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                        className: "mt-2 p-3 bg-sand/20 border border-sand rounded-md whitespace-pre-line text-sm text-bark",
-                                                                        children: menus.find((m)=>m.value === guest.menuPreference)?.description
+                                                                        className: "mt-2 p-3 bg-sand/20 border border-sand rounded-md text-sm text-bark",
+                                                                        children: menus.find((m)=>m.value === guest.menuPreference)?.description.split("\n").map((line, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                                                className: idx === 0 ? "" : "mt-2",
+                                                                                children: line
+                                                                            }, idx, false, {
+                                                                                fileName: "src/components/RSVPForm.tsx",
+                                                                                lineNumber: 515,
+                                                                                columnNumber: 39
+                                                                            }, this))
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 500,
+                                                                        lineNumber: 508,
                                                                         columnNumber: 33
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 470,
+                                                                lineNumber: 478,
                                                                 columnNumber: 29
                                                             }, this)
                                                         ]
                                                     }, guest.id, true, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 402,
+                                                        lineNumber: 410,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 400,
+                                                lineNumber: 408,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 361,
+                                        lineNumber: 369,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19391,7 +19417,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                 children: "\u041D\u0443\u0436\u0434\u0430\u0435\u0442\u0435 \u043B\u0438 \u0441\u0435 \u043E\u0442 \u043D\u0430\u0441\u0442\u0430\u043D\u044F\u0432\u0430\u043D\u0435? *"
                                             }, void 0, false, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 517,
+                                                lineNumber: 533,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19411,7 +19437,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         className: "border-sage text-sage"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 530,
+                                                                        lineNumber: 546,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19419,13 +19445,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         children: "\u0414\u0430, \u043C\u043E\u043B\u044F"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 534,
+                                                                        lineNumber: 550,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 529,
+                                                                lineNumber: 545,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19436,7 +19462,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         className: "border-sage text-sage"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 537,
+                                                                        lineNumber: 553,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
@@ -19444,19 +19470,19 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                                         children: "\u041D\u0435, \u0431\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u044F"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/RSVPForm.tsx",
-                                                                        lineNumber: 541,
+                                                                        lineNumber: 557,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 536,
+                                                                lineNumber: 552,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 521,
+                                                        lineNumber: 537,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19464,20 +19490,77 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                                         children: "\u041D\u0430\u0441\u0442\u0430\u043D\u044F\u0432\u0430\u043D\u0435\u0442\u043E \u0435 \u0437\u0430 \u0441\u043C\u0435\u0442\u043A\u0430 \u043D\u0430 \u0433\u043E\u0441\u0442\u0438\u0442\u0435."
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 544,
+                                                        lineNumber: 560,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 520,
+                                                lineNumber: 536,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 516,
+                                        lineNumber: 532,
                                         columnNumber: 19
+                                    }, this),
+                                    formData.needsAccommodation === "yes" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "mt-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "text-olivewood mb-2 block",
+                                                children: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0442\u0438\u043F \u0441\u0442\u0430\u044F *"
+                                            }, void 0, false, {
+                                                fileName: "src/components/RSVPForm.tsx",
+                                                lineNumber: 568,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.Select), {
+                                                value: accommodationType,
+                                                onValueChange: (value)=>setAccommodationType(value),
+                                                disabled: loading,
+                                                children: [
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectTrigger), {
+                                                        className: "border-sand focus:border-sage bg-white text-ellipsis",
+                                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectValue), {
+                                                            placeholder: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u0442\u0430\u044F"
+                                                        }, void 0, false, {
+                                                            fileName: "src/components/RSVPForm.tsx",
+                                                            lineNumber: 577,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/RSVPForm.tsx",
+                                                        lineNumber: 576,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectContent), {
+                                                        className: "z-50 bg-white border border-sand shadow-md",
+                                                        children: accommodationOptions.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectItem), {
+                                                                value: option.value,
+                                                                children: option.label
+                                                            }, option.value, false, {
+                                                                fileName: "src/components/RSVPForm.tsx",
+                                                                lineNumber: 581,
+                                                                columnNumber: 29
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/RSVPForm.tsx",
+                                                        lineNumber: 579,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/RSVPForm.tsx",
+                                                lineNumber: 571,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/RSVPForm.tsx",
+                                        lineNumber: 567,
+                                        columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true),
@@ -19489,7 +19572,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         children: "\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u043D\u0438 \u0441\u044A\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0438\u043B\u0438 \u0438\u0437\u0438\u0441\u043A\u0432\u0430\u043D\u0438\u044F"
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 554,
+                                        lineNumber: 594,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _textarea.Textarea), {
@@ -19502,13 +19585,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         disabled: loading
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 557,
+                                        lineNumber: 597,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 553,
+                                lineNumber: 593,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -19522,40 +19605,40 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         size: 20
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 576,
+                                        lineNumber: 616,
                                         columnNumber: 36
                                     }, this),
                                     loading ? "\u0418\u0437\u043F\u0440\u0430\u0449\u0430\u043D\u0435..." : "\u0418\u0437\u043F\u0440\u0430\u0442\u0438 \u043F\u043E\u0442\u0432\u044A\u0440\u0436\u0434\u0435\u043D\u0438\u0435"
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 570,
+                                lineNumber: 610,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/RSVPForm.tsx",
-                        lineNumber: 270,
+                        lineNumber: 278,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/RSVPForm.tsx",
-                    lineNumber: 269,
+                    lineNumber: 277,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/RSVPForm.tsx",
-            lineNumber: 234,
+            lineNumber: 242,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/RSVPForm.tsx",
-        lineNumber: 233,
+        lineNumber: 241,
         columnNumber: 5
     }, this);
 }
-_s(RSVPForm, "qrsBpbxWW9TXX8Mn1yImVjh+8jU=");
+_s(RSVPForm, "FBA5gLVHk8Y+PsDpGypCj/ypR+o=");
 _c = RSVPForm;
 var _c;
 $RefreshReg$(_c, "RSVPForm");
@@ -36156,59 +36239,32 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Select", ()=>Select);
-parcelHelpers.export(exports, "SelectContent", ()=>SelectContent);
-parcelHelpers.export(exports, "SelectGroup", ()=>SelectGroup);
-parcelHelpers.export(exports, "SelectItem", ()=>SelectItem);
-parcelHelpers.export(exports, "SelectLabel", ()=>SelectLabel);
-parcelHelpers.export(exports, "SelectScrollDownButton", ()=>SelectScrollDownButton);
-parcelHelpers.export(exports, "SelectScrollUpButton", ()=>SelectScrollUpButton);
-parcelHelpers.export(exports, "SelectSeparator", ()=>SelectSeparator);
 parcelHelpers.export(exports, "SelectTrigger", ()=>SelectTrigger);
 parcelHelpers.export(exports, "SelectValue", ()=>SelectValue);
+parcelHelpers.export(exports, "SelectContent", ()=>SelectContent);
+parcelHelpers.export(exports, "SelectItem", ()=>SelectItem);
+parcelHelpers.export(exports, "SelectSeparator", ()=>SelectSeparator);
+parcelHelpers.export(exports, "SelectScrollUpButton", ()=>SelectScrollUpButton);
+parcelHelpers.export(exports, "SelectScrollDownButton", ()=>SelectScrollDownButton);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactSelect = require("@radix-ui/react-select");
 var _lucideReact = require("lucide-react");
 var _utils = require("./utils");
 "use client";
-function Select({ ...props }) {
+function Select(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Root, {
-        "data-slot": "select",
         ...props
     }, void 0, false, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 16,
+        lineNumber: 9,
         columnNumber: 10
     }, this);
 }
 _c = Select;
-function SelectGroup({ ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Group, {
-        "data-slot": "select-group",
-        ...props
-    }, void 0, false, {
-        fileName: "src/components/ui/select.tsx",
-        lineNumber: 22,
-        columnNumber: 10
-    }, this);
-}
-_c1 = SelectGroup;
-function SelectValue({ ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Value, {
-        "data-slot": "select-value",
-        ...props
-    }, void 0, false, {
-        fileName: "src/components/ui/select.tsx",
-        lineNumber: 28,
-        columnNumber: 10
-    }, this);
-}
-_c2 = SelectValue;
 function SelectTrigger({ className, size = "default", children, ...props }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Trigger, {
-        "data-slot": "select-trigger",
-        "data-size": size,
-        className: (0, _utils.cn)("border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-full items-center justify-between gap-2 rounded-md border bg-input-background px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", className),
+        className: (0, _utils.cn)("flex w-full items-center justify-between gap-2 rounded-md border bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sage disabled:cursor-not-allowed disabled:opacity-50", className),
         ...props,
         children: [
             children,
@@ -36218,175 +36274,151 @@ function SelectTrigger({ className, size = "default", children, ...props }) {
                     className: "size-4 opacity-50"
                 }, void 0, false, {
                     fileName: "src/components/ui/select.tsx",
-                    lineNumber: 51,
+                    lineNumber: 30,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/ui/select.tsx",
-                lineNumber: 50,
+                lineNumber: 29,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 40,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
-_c3 = SelectTrigger;
+_c1 = SelectTrigger;
+function SelectValue({ className, placeholder, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Value, {
+        className: (0, _utils.cn)("block overflow-hidden whitespace-nowrap text-ellipsis", className),
+        placeholder: placeholder,
+        ...props
+    }, void 0, false, {
+        fileName: "src/components/ui/select.tsx",
+        lineNumber: 44,
+        columnNumber: 5
+    }, this);
+}
+_c2 = SelectValue;
 function SelectContent({ className, children, position = "popper", ...props }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Portal, {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Content, {
-            "data-slot": "select-content",
-            className: (0, _utils.cn)("bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md", position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1", className),
+            className: (0, _utils.cn)("bg-white border shadow-md rounded-md max-h-60 overflow-auto", className),
             position: position,
             ...props,
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(SelectScrollUpButton, {}, void 0, false, {
-                    fileName: "src/components/ui/select.tsx",
-                    lineNumber: 76,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Viewport, {
-                    className: (0, _utils.cn)("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1"),
-                    children: children
-                }, void 0, false, {
-                    fileName: "src/components/ui/select.tsx",
-                    lineNumber: 77,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(SelectScrollDownButton, {}, void 0, false, {
-                    fileName: "src/components/ui/select.tsx",
-                    lineNumber: 86,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Viewport, {
+                className: "p-1",
+                children: children
+            }, void 0, false, {
+                fileName: "src/components/ui/select.tsx",
+                lineNumber: 71,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
             fileName: "src/components/ui/select.tsx",
-            lineNumber: 65,
+            lineNumber: 63,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 64,
+        lineNumber: 62,
         columnNumber: 5
     }, this);
 }
-_c4 = SelectContent;
-function SelectLabel({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Label, {
-        "data-slot": "select-label",
-        className: (0, _utils.cn)("text-muted-foreground px-2 py-1.5 text-xs", className),
-        ...props
-    }, void 0, false, {
-        fileName: "src/components/ui/select.tsx",
-        lineNumber: 97,
-        columnNumber: 5
-    }, this);
-}
-_c5 = SelectLabel;
+_c3 = SelectContent;
 function SelectItem({ className, children, ...props }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Item, {
-        "data-slot": "select-item",
-        className: (0, _utils.cn)("hover:bg-sage hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2", className),
+        className: (0, _utils.cn)("relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none hover:bg-sage hover:text-white data-[disabled]:opacity-50", className),
         ...props,
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: "absolute right-2 flex size-3.5 items-center justify-center",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ItemIndicator, {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.CheckIcon), {
-                        className: "size-4"
-                    }, void 0, false, {
-                        fileName: "src/components/ui/select.tsx",
-                        lineNumber: 121,
-                        columnNumber: 11
-                    }, this)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ItemText, {
+                className: "overflow-hidden whitespace-nowrap text-ellipsis",
+                children: children
+            }, void 0, false, {
+                fileName: "src/components/ui/select.tsx",
+                lineNumber: 92,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ItemIndicator, {
+                className: "absolute right-2 flex items-center justify-center",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.CheckIcon), {
+                    className: "size-4"
                 }, void 0, false, {
                     fileName: "src/components/ui/select.tsx",
-                    lineNumber: 120,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/ui/select.tsx",
-                lineNumber: 119,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ItemText, {
-                children: children
-            }, void 0, false, {
-                fileName: "src/components/ui/select.tsx",
-                lineNumber: 124,
+                lineNumber: 95,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 111,
+        lineNumber: 85,
         columnNumber: 5
     }, this);
 }
-_c6 = SelectItem;
-function SelectSeparator({ className, ...props }) {
+_c4 = SelectItem;
+function SelectSeparator(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.Separator, {
-        "data-slot": "select-separator",
-        className: (0, _utils.cn)("bg-border pointer-events-none -mx-1 my-1 h-px", className),
+        className: "h-px bg-gray-200 my-1",
         ...props
     }, void 0, false, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 134,
+        lineNumber: 106,
         columnNumber: 5
     }, this);
 }
-_c7 = SelectSeparator;
-function SelectScrollUpButton({ className, ...props }) {
+_c5 = SelectSeparator;
+function SelectScrollUpButton(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ScrollUpButton, {
-        "data-slot": "select-scroll-up-button",
-        className: (0, _utils.cn)("flex cursor-default items-center justify-center py-1", className),
+        className: "flex items-center justify-center py-1",
         ...props,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronUpIcon), {
             className: "size-4"
         }, void 0, false, {
             fileName: "src/components/ui/select.tsx",
-            lineNumber: 155,
+            lineNumber: 118,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 147,
+        lineNumber: 114,
         columnNumber: 5
     }, this);
 }
-_c8 = SelectScrollUpButton;
-function SelectScrollDownButton({ className, ...props }) {
+_c6 = SelectScrollUpButton;
+function SelectScrollDownButton(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactSelect.ScrollDownButton, {
-        "data-slot": "select-scroll-down-button",
-        className: (0, _utils.cn)("flex cursor-default items-center justify-center py-1", className),
+        className: "flex items-center justify-center py-1",
         ...props,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronDownIcon), {
             className: "size-4"
         }, void 0, false, {
             fileName: "src/components/ui/select.tsx",
-            lineNumber: 173,
+            lineNumber: 131,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/ui/select.tsx",
-        lineNumber: 165,
+        lineNumber: 127,
         columnNumber: 5
     }, this);
 }
-_c9 = SelectScrollDownButton;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9;
+_c7 = SelectScrollDownButton;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
 $RefreshReg$(_c, "Select");
-$RefreshReg$(_c1, "SelectGroup");
+$RefreshReg$(_c1, "SelectTrigger");
 $RefreshReg$(_c2, "SelectValue");
-$RefreshReg$(_c3, "SelectTrigger");
-$RefreshReg$(_c4, "SelectContent");
-$RefreshReg$(_c5, "SelectLabel");
-$RefreshReg$(_c6, "SelectItem");
-$RefreshReg$(_c7, "SelectSeparator");
-$RefreshReg$(_c8, "SelectScrollUpButton");
-$RefreshReg$(_c9, "SelectScrollDownButton");
+$RefreshReg$(_c3, "SelectContent");
+$RefreshReg$(_c4, "SelectItem");
+$RefreshReg$(_c5, "SelectSeparator");
+$RefreshReg$(_c6, "SelectScrollUpButton");
+$RefreshReg$(_c7, "SelectScrollDownButton");
 
   $parcel$ReactRefreshHelpers$26e5.postlude(module);
 } finally {
