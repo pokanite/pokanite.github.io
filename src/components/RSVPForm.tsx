@@ -84,7 +84,7 @@ const menus = [
 const accommodationOptions = [
   {
     value: "double",
-    label: "105 евро - двойна стая със закуска и спа центъра",
+    label: "105 евро - двойна стая",
   },
   { value: "triple", label: "115 евро - тройна стая" },
 ];
@@ -127,10 +127,10 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
         prev.map((g, i) =>
           i === 0
             ? {
-                ...g,
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-              }
+              ...g,
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+            }
             : g,
         ),
       );
@@ -564,26 +564,31 @@ export function RSVPForm({ api_key, invite, maxGuests }: Props) {
                   </div>
 
                   {formData.needsAccommodation === "yes" && (
-                    <div className="mt-4">
-                      <Label className="text-olivewood mb-2 block">
-                        Изберете тип стая *
-                      </Label>
-                      <Select
-                        value={accommodationType}
-                        onValueChange={(value) => setAccommodationType(value)}
-                        disabled={loading}
-                      >
-                        <SelectTrigger className="border-sand focus:border-sage bg-white text-ellipsis">
-                          <SelectValue placeholder="Изберете стая" />
-                        </SelectTrigger>
-                        <SelectContent className="z-50 bg-white border border-sand shadow-md">
-                          {accommodationOptions.map((option) => (
-                            <SelectItem key={option.value} value={option.value}>
-                              {option.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                        <div>
+                          <div className="mt-4">
+                            <Label className="text-olivewood mb-2 block">
+                              Изберете тип стая *
+                            </Label>
+                            <Select
+                              value={accommodationType}
+                              onValueChange={(value) => setAccommodationType(value)}
+                              disabled={loading}
+                            >
+                              <SelectTrigger className="border-sand focus:border-sage bg-white text-ellipsis">
+                                <SelectValue placeholder="Изберете стая" />
+                              </SelectTrigger>
+                              <SelectContent className="z-50 bg-white border border-sand shadow-md">
+                                {accommodationOptions.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="mt-2 p-3 bg-sand/20 border border-sand rounded-md text-sm text-bark">
+                            Включва закуска и достъп до спа център.
+                          </div>
                     </div>
                   )}
                 </>
