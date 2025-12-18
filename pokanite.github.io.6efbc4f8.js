@@ -18700,7 +18700,7 @@ const menus = [
 const accommodationOptions = [
     {
         value: "double",
-        label: "105 \u0435\u0432\u0440\u043E - \u0434\u0432\u043E\u0439\u043D\u0430 \u0441\u0442\u0430\u044F \u0441\u044A\u0441 \u0437\u0430\u043A\u0443\u0441\u043A\u0430 \u0438 \u0441\u043F\u0430 \u0446\u0435\u043D\u0442\u044A\u0440\u0430"
+        label: "105 \u0435\u0432\u0440\u043E - \u0434\u0432\u043E\u0439\u043D\u0430 \u0441\u0442\u0430\u044F"
     },
     {
         value: "triple",
@@ -19506,61 +19506,77 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         columnNumber: 19
                                     }, this),
                                     formData.needsAccommodation === "yes" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "mt-4",
                                         children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                className: "text-olivewood mb-2 block",
-                                                children: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0442\u0438\u043F \u0441\u0442\u0430\u044F *"
-                                            }, void 0, false, {
-                                                fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 568,
-                                                columnNumber: 23
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.Select), {
-                                                value: accommodationType,
-                                                onValueChange: (value)=>setAccommodationType(value),
-                                                disabled: loading,
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "mt-4",
                                                 children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectTrigger), {
-                                                        className: "border-sand focus:border-sage bg-white text-ellipsis",
-                                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectValue), {
-                                                            placeholder: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u0442\u0430\u044F"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/RSVPForm.tsx",
-                                                            lineNumber: 577,
-                                                            columnNumber: 27
-                                                        }, this)
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                        className: "text-olivewood mb-2 block",
+                                                        children: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0442\u0438\u043F \u0441\u0442\u0430\u044F *"
                                                     }, void 0, false, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 576,
-                                                        columnNumber: 25
+                                                        lineNumber: 569,
+                                                        columnNumber: 29
                                                     }, this),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectContent), {
-                                                        className: "z-50 bg-white border border-sand shadow-md",
-                                                        children: accommodationOptions.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectItem), {
-                                                                value: option.value,
-                                                                children: option.label
-                                                            }, option.value, false, {
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.Select), {
+                                                        value: accommodationType,
+                                                        onValueChange: (value)=>setAccommodationType(value),
+                                                        disabled: loading,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectTrigger), {
+                                                                className: "border-sand focus:border-sage bg-white text-ellipsis",
+                                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectValue), {
+                                                                    placeholder: "\u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u0442\u0430\u044F"
+                                                                }, void 0, false, {
+                                                                    fileName: "src/components/RSVPForm.tsx",
+                                                                    lineNumber: 578,
+                                                                    columnNumber: 33
+                                                                }, this)
+                                                            }, void 0, false, {
                                                                 fileName: "src/components/RSVPForm.tsx",
-                                                                lineNumber: 581,
-                                                                columnNumber: 29
-                                                            }, this))
-                                                    }, void 0, false, {
+                                                                lineNumber: 577,
+                                                                columnNumber: 31
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectContent), {
+                                                                className: "z-50 bg-white border border-sand shadow-md",
+                                                                children: accommodationOptions.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _select.SelectItem), {
+                                                                        value: option.value,
+                                                                        children: option.label
+                                                                    }, option.value, false, {
+                                                                        fileName: "src/components/RSVPForm.tsx",
+                                                                        lineNumber: 582,
+                                                                        columnNumber: 35
+                                                                    }, this))
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/RSVPForm.tsx",
+                                                                lineNumber: 580,
+                                                                columnNumber: 31
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "src/components/RSVPForm.tsx",
-                                                        lineNumber: 579,
-                                                        columnNumber: 25
+                                                        lineNumber: 572,
+                                                        columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/RSVPForm.tsx",
-                                                lineNumber: 571,
-                                                columnNumber: 23
+                                                lineNumber: 568,
+                                                columnNumber: 27
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "mt-2 p-3 bg-sand/20 border border-sand rounded-md text-sm text-bark",
+                                                children: "\u0412\u043A\u043B\u044E\u0447\u0432\u0430 \u0437\u0430\u043A\u0443\u0441\u043A\u0430 \u0438 \u0434\u043E\u0441\u0442\u044A\u043F \u0434\u043E \u0441\u043F\u0430 \u0446\u0435\u043D\u0442\u044A\u0440."
+                                            }, void 0, false, {
+                                                fileName: "src/components/RSVPForm.tsx",
+                                                lineNumber: 589,
+                                                columnNumber: 27
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/RSVPForm.tsx",
                                         lineNumber: 567,
-                                        columnNumber: 21
+                                        columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true),
@@ -19572,7 +19588,7 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         children: "\u0421\u043F\u0435\u0446\u0438\u0430\u043B\u043D\u0438 \u0441\u044A\u043E\u0431\u0449\u0435\u043D\u0438\u044F \u0438\u043B\u0438 \u0438\u0437\u0438\u0441\u043A\u0432\u0430\u043D\u0438\u044F"
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 594,
+                                        lineNumber: 599,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _textarea.Textarea), {
@@ -19585,13 +19601,13 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         disabled: loading
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 597,
+                                        lineNumber: 602,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 593,
+                                lineNumber: 598,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -19605,14 +19621,14 @@ function RSVPForm({ api_key, invite, maxGuests }) {
                                         size: 20
                                     }, void 0, false, {
                                         fileName: "src/components/RSVPForm.tsx",
-                                        lineNumber: 616,
+                                        lineNumber: 621,
                                         columnNumber: 36
                                     }, this),
                                     loading ? "\u0418\u0437\u043F\u0440\u0430\u0449\u0430\u043D\u0435..." : "\u0418\u0437\u043F\u0440\u0430\u0442\u0438 \u043F\u043E\u0442\u0432\u044A\u0440\u0436\u0434\u0435\u043D\u0438\u0435"
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/RSVPForm.tsx",
-                                lineNumber: 610,
+                                lineNumber: 615,
                                 columnNumber: 15
                             }, this)
                         ]
